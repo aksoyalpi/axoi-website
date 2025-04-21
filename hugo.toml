@@ -65,7 +65,7 @@ style = "github-dark"
 
 [languages]
   [languages.en]
-    languageCode = "en-US
+    languageCode = "en-US"
     languageName = "English"
     # Menu links
     [[languages.en.menu.main]]
