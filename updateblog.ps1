@@ -1,101 +1,3 @@
----
-title: Blog Pipeline
-date: 2025-04-20
-draft: false
-tags:
-  - axoi
-  - blog
----
-
-# Obisidian
-
-# PowerShell
-```shell
-robocopy "C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts" "C:\Users\aksoy\dev\Website\axoi\content\posts" /mir
-
-hugo server -t hugo-coder
-```
-
-!![Image Description](/images/Pasted%20image%2020250420201259.png)
-
-```python
-import os
-
-import re
-
-import shutil
-
-  
-
-# Paths (using raw strings to handle Windows backslashes correctly)
-
-posts_dir = r"C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts"
-
-attachments_dir = r"C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments"
-
-static_images_dir = r"C:\Users\aksoy\dev\Website\axoi\static\images"
-
-  
-
-# Step 1: Process each markdown file in the posts directory
-
-for filename in os.listdir(posts_dir):
-
-    if filename.endswith(".md"):
-
-        filepath = os.path.join(posts_dir, filename)
-
-        with open(filepath, "r", encoding="utf-8") as file:
-
-            content = file.read()
-
-        # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)
-
-        images = re.findall(r'\[\[([^]]*\.png)\]\]', content)
-
-        # Step 3: Replace image links and ensure URLs are correctly formatted
-
-        for image in images:
-
-            # Prepare the Markdown-compatible link with %20 replacing spaces
-
-            markdown_image = f"![Image Description](/images/{image.replace(' ', '%20')})"
-
-            content = content.replace(f"[[{image}]]", markdown_image)
-
-            # Step 4: Copy the image to the Hugo static/images directory if it exists
-
-            image_source = os.path.join(attachments_dir, image)
-
-            if os.path.exists(image_source):
-
-                shutil.copy(image_source, static_images_dir)
-
-  
-
-        # Step 5: Write the updated content back to the markdown file
-
-        with open(filepath, "w", encoding="utf-8") as file:
-
-            file.write(content)
-
-  
-
-print("Markdown files processed and images copied successfully.")
-```
-
-# Push to Github
-```shell
-# Step 8: Push the public folder to the hostinger branch using subtree split and force push
-echo "Deploying to GitHub Hostinger..."
-git subtree split --prefix public -b hostinger-deploy
-git push origin hostinger-deploy:hostinger --force
-git branch -D hostinger-deploy
-
-```
-
-# The Mega Script
-```shell
 # PowerShell Script for Windows
 
 # Set variables for Obsidian to Hugo copy
@@ -103,7 +5,7 @@ $sourcePath = "C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts"
 $destinationPath = "C:\Users\aksoy\dev\Website\axoi\content\posts"
 
 # Set Github repo 
-$myrepo = git@github.com:aksoyalpi/axoi-website.git
+$myrepo = "git@github.com:aksoyalpi/axoi-website.git"
 
 # Set error handling
 $ErrorActionPreference = "Stop"
@@ -251,5 +153,3 @@ try {
 git branch -D hostinger-deploy
 
 Write-Host "All done! Site synced, processed, committed, built, and deployed."
-
-```
