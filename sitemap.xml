@@ -1,36 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://alperenaksoy.de/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/tags/axoi/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/tags/blog/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/posts/blog-pipeline/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/posts/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/tags/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/authors/</loc>
-  </url><url>
-    <loc>https://alperenaksoy.de/categories/</loc>
-  </url><url>
-    <loc>https://alperenaksoy.de/contact/</loc>
-  </url><url>
-    <loc>https://alperenaksoy.de/projects/</loc>
-  </url><url>
-    <loc>https://alperenaksoy.de/series/</loc>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://alperenaksoy.de/en/sitemap.xml</loc>
+    
+      <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://alperenaksoy.de/de/sitemap.xml</loc>
+    
+  </sitemap>
+  
+</sitemapindex>
