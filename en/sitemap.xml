@@ -2,18 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://alperenaksoy.de/en/about/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://alperenaksoy.de/en/about/"
-                />
-  </url><url>
     <loc>https://alperenaksoy.de/en/</loc>
     <xhtml:link
                 rel="alternate"
@@ -48,30 +36,6 @@
                 rel="alternate"
                 hreflang="en-US"
                 href="https://alperenaksoy.de/en/categories/"
-                />
-  </url><url>
-    <loc>https://alperenaksoy.de/en/contact/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/kontakt/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://alperenaksoy.de/en/contact/"
-                />
-  </url><url>
-    <loc>https://alperenaksoy.de/en/projects/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/projects/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://alperenaksoy.de/en/projects/"
                 />
   </url><url>
     <loc>https://alperenaksoy.de/en/series/</loc>
