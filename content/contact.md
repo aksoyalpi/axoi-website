@@ -3,22 +3,20 @@ title = "Contact"
 slug = "contact"
 +++
 
-# 📬 Contact
-
 I'd love to hear from you — whether you have a question, want to collaborate, or just want to say *salaam*! 🤝
 
 ---
 
-## 📧 Email
+# 📧 Email
 
 You can reach me directly at:
 
-**`aksoyalpi@gmail.com`**  
+*`aksoyalpi@gmail.com`**  
 _(Replace with your actual email address)_
 
 ---
 
-## 💬 Social Media
+# 💬 Social Media
 
 Feel free to connect with me on any of the following platforms:
 
@@ -28,7 +26,7 @@ Feel free to connect with me on any of the following platforms:
 
 ---
 
-## 🙌 Support My Work
+# 🙌 Support My Work
 
 If you appreciate my apps or open-source work, consider supporting me:
 
@@ -38,7 +36,7 @@ Every little bit helps me keep the apps free, private, and ad-free!
 
 ---
 
-## 🤲 Feedback & Suggestions
+# 🤲 Feedback & Suggestions
 
 I'm always looking to improve. If you have ideas or requests for new features in my apps (like the PrayerTime App or Quranify), feel free to:
 
