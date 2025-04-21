@@ -17,7 +17,7 @@ style = "github-dark"
 
 [params]
   author = "Alperen Aksoy"
-  info = "Software Engineer"
+  info = ["Software Engineer", "Mobile App Developer"]
   description = "Axoi Software Solutions Website"
   keywords = "blog,developer,personal,software,saas"
   avatarurl = "images/profile.png"
@@ -92,7 +92,7 @@ languageName = "Deutsch"
 
 [languages.de.params]
 author = "Alperen Aksoy"
-info = "Softwareentwickler"
+info = ["Softwareentwickler", "Mobile App-Entwicklung"]
 description = "Webseite von Alperen Aksoy"
 keyword = "software,blog,saas,persönlich"
 
