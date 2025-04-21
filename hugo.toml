@@ -63,20 +63,47 @@ style = "github-dark"
   weight = 3
   url = "https://www.linkedin.com/in/alperen-aksoy-9364aa2a8/"
 
+# Languages
+[languages.en]
+languageName = ":uk:"
+
+
+
 # Menu links
-[[menu.main]]
+[[languages.en.menu.main]]
   name = "Blog"
   weight = 1
   url  = "posts/"
-[[menu.main]]
+[[languages.en.menu.main]]
   name = "About"
   weight = 2
   url = "about/"
-[[menu.main]]
+[[languages.en.menu.main]]
   name = "Projects"
   weight = 3
   url = "projects/"
-[[menu.main]]
+[[languages.en.menu.main]]
   name = "Contact"
   weight = 4
   url = "contact/"
+
+[languages.de]
+languageName = ":de:"
+
+[[languages.de.menu.main]]
+  name = "Blog"
+  weight = 1
+  url  = "posts/"
+[[languages.de.menu.main]]
+  name = "Über"
+  weight = 2
+  url = "about/"
+[[languages.de.menu.main]]
+  name = "Projekte"
+  weight = 3
+  url = "projects/"
+[[languages.de.menu.main]]
+  name = "Kontakt"
+  weight = 4
+  url = "contact/"
+
