@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on axoi</title>
-    <link>http://www.example.com/tags/</link>
+    <link>https://mediumseagreen-cobra-673991.hostingersite.com/tags/</link>
     <description>Recent content in Tags on axoi</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mediumseagreen-cobra-673991.hostingersite.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tag 1</title>
-      <link>http://www.example.com/tags/tag-1/</link>
+      <link>https://mediumseagreen-cobra-673991.hostingersite.com/tags/tag-1/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://www.example.com/tags/tag-1/</guid>
+      <guid>https://mediumseagreen-cobra-673991.hostingersite.com/tags/tag-1/</guid>
       <description></description>
     </item>
     <item>
       <title>Tag 2</title>
-      <link>http://www.example.com/tags/tag-2/</link>
+      <link>https://mediumseagreen-cobra-673991.hostingersite.com/tags/tag-2/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://www.example.com/tags/tag-2/</guid>
+      <guid>https://mediumseagreen-cobra-673991.hostingersite.com/tags/tag-2/</guid>
       <description></description>
     </item>
     <item>
       <title>Axoi</title>
-      <link>http://www.example.com/tags/axoi/</link>
+      <link>https://mediumseagreen-cobra-673991.hostingersite.com/tags/axoi/</link>
       <pubDate>Sun, 20 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://www.example.com/tags/axoi/</guid>
+      <guid>https://mediumseagreen-cobra-673991.hostingersite.com/tags/axoi/</guid>
       <description></description>
     </item>
     <item>
       <title>Blog</title>
-      <link>http://www.example.com/tags/blog/</link>
+      <link>https://mediumseagreen-cobra-673991.hostingersite.com/tags/blog/</link>
       <pubDate>Sun, 20 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://www.example.com/tags/blog/</guid>
+      <guid>https://mediumseagreen-cobra-673991.hostingersite.com/tags/blog/</guid>
       <description></description>
     </item>
   </channel>
