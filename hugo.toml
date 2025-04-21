@@ -1,8 +1,8 @@
 baseurl = "https://alperenaksoy.de/"
 title = "Alperen Aksoy"
 theme = "hugo-coder"
-languagecode = "en"
-defaultcontentlanguage = "en"
+languagecode = "de"
+defaultcontentlanguage = "de"
 
 
 [pagination]

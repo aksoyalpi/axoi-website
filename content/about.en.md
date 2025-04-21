@@ -1,12 +1,6 @@
-+++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
-+++
+# About
 
-# Who I Am
+## Who I Am
 
 Hi! I'm a passionate developer focused on creating minimalistic, useful, and user-friendly mobile applications — especially tailored to the needs of the Muslim community. I believe in building software that is simple, respectful of privacy, and truly beneficial to its users.
 
@@ -20,9 +14,9 @@ I develop apps that are:
 
 ---
 
-# Featured Projects
+## Featured Projects
 
-## 📱 **[Prayers](/projects)**
+### 📱 **[Prayers](https://play.google.com/store/apps/details?id=com.alaksoftware.prayer_times&pcampaignid=web_share)**
 A clean and elegant app for daily Muslim prayer times.
 
 - ✅ Mark prayers as completed
@@ -32,7 +26,7 @@ A clean and elegant app for daily Muslim prayer times.
 - 🌐 Available in English, Turkish, and German
 - 🌙 Dark & Light theme support
 
-## 🎧 **[Quranify](/projects)**
+### 🎧 **[Quranify](https://play.google.com/store/apps/details?id=com.alaksoftware.quranify2&pcampaignid=web_share)**
 A relaxing and immersive app to listen to the Qur’an.
 
 - 🎙️ Multiple reciters
@@ -43,7 +37,7 @@ A relaxing and immersive app to listen to the Qur’an.
 
 ---
 
-# Philosophy
+## Philosophy
 
 > _“Technology should elevate your life, not distract from it.”_
 
@@ -51,13 +45,13 @@ I aim to build software with soul — tools that support your spiritual journey,
 
 ---
 
-# Let’s Connect
+## Let’s Connect
 
 Feel free to reach out or contribute to any of my open-source projects.  
 I love collaborating and sharing ideas!
 
-- GitHub: [github.com/aksoyalpi](https://github.com/aksoyalpi)
-- Ko-fi (support): [ko-fi.com/alaksoftware](https://ko-fi.com/alaksoftware)
+- GitHub: [github.com/your-username](https://github.com/your-username)
+- Ko-fi (support): [ko-fi.com/your-kofi](https://ko-fi.com/your-kofi)
 
 ---
 
