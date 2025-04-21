@@ -21,10 +21,16 @@
     <loc>https://alperenaksoy.de/tags/blog/</loc>
     <lastmod>2025-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://alperenaksoy.de/posts/blog-pipeline/</loc>
+    <loc>https://alperenaksoy.de/de/posts/blog-pipeline/</loc>
     <lastmod>2025-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://alperenaksoy.de/posts/</loc>
+    <loc>https://alperenaksoy.de/en/posts/blog-pipeline/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://alperenaksoy.de/de/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://alperenaksoy.de/en/</loc>
     <lastmod>2025-04-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://alperenaksoy.de/tags/</loc>
@@ -40,18 +46,10 @@
                 href="https://alperenaksoy.de/tags/"
                 />
   </url><url>
-    <loc>https://alperenaksoy.de/about/</loc>
+    <loc>https://alperenaksoy.de/de/about/</loc>
     <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://alperenaksoy.de/en/about/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/about/"
-                />
+  </url><url>
+    <loc>https://alperenaksoy.de/en/about/</loc>
   </url><url>
     <loc>https://alperenaksoy.de/authors/</loc>
     <xhtml:link
@@ -77,29 +75,13 @@
                 href="https://alperenaksoy.de/categories/"
                 />
   </url><url>
-    <loc>https://alperenaksoy.de/kontakt/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://alperenaksoy.de/en/contact/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/kontakt/"
-                />
+    <loc>https://alperenaksoy.de/en/contact/</loc>
   </url><url>
-    <loc>https://alperenaksoy.de/projects/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
-                href="https://alperenaksoy.de/en/projects/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/projects/"
-                />
+    <loc>https://alperenaksoy.de/de/kontakt/</loc>
+  </url><url>
+    <loc>https://alperenaksoy.de/en/projects/</loc>
+  </url><url>
+    <loc>https://alperenaksoy.de/de/projects/</loc>
   </url><url>
     <loc>https://alperenaksoy.de/series/</loc>
     <xhtml:link
