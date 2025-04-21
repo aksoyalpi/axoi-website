@@ -8,9 +8,9 @@ defaultcontentlanguage = "en"
 [pagination]
 pagerSize = 20
 
-[services]
-[services.disqus]
-shortname = "axoi-diqus"
+#[services]
+#[services.disqus]
+#shortname = "axoi-diqus"
 
 [markup.highlight]
 style = "github-dark"
