@@ -2,85 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://alperenaksoy.de/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+    <loc>https://alperenaksoy.de/en/about/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de-DE"
-                href="https://alperenaksoy.de/de/"
+                href="https://alperenaksoy.de/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
+                href="https://alperenaksoy.de/en/about/"
+                />
+  </url><url>
+    <loc>https://alperenaksoy.de/en/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de-DE"
                 href="https://alperenaksoy.de/"
                 />
-  </url><url>
-    <loc>https://alperenaksoy.de/tags/axoi/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/tags/blog/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/posts/blog-pipeline/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/posts/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/tags/</loc>
-    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/de/tags/"
-                />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
-                href="https://alperenaksoy.de/tags/"
+                href="https://alperenaksoy.de/en/"
                 />
   </url><url>
-    <loc>https://alperenaksoy.de/about/</loc>
-    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://alperenaksoy.de/authors/</loc>
+    <loc>https://alperenaksoy.de/en/authors/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de-DE"
-                href="https://alperenaksoy.de/de/authors/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en-US"
                 href="https://alperenaksoy.de/authors/"
                 />
-  </url><url>
-    <loc>https://alperenaksoy.de/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="de-DE"
-                href="https://alperenaksoy.de/de/categories/"
-                />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
+                href="https://alperenaksoy.de/en/authors/"
+                />
+  </url><url>
+    <loc>https://alperenaksoy.de/en/categories/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de-DE"
                 href="https://alperenaksoy.de/categories/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://alperenaksoy.de/en/categories/"
+                />
   </url><url>
-    <loc>https://alperenaksoy.de/contact/</loc>
-  </url><url>
-    <loc>https://alperenaksoy.de/projects/</loc>
-  </url><url>
-    <loc>https://alperenaksoy.de/series/</loc>
+    <loc>https://alperenaksoy.de/en/contact/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="de-DE"
-                href="https://alperenaksoy.de/de/series/"
+                href="https://alperenaksoy.de/kontakt/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en-US"
+                href="https://alperenaksoy.de/en/contact/"
+                />
+  </url><url>
+    <loc>https://alperenaksoy.de/en/projects/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de-DE"
+                href="https://alperenaksoy.de/projects/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://alperenaksoy.de/en/projects/"
+                />
+  </url><url>
+    <loc>https://alperenaksoy.de/en/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de-DE"
                 href="https://alperenaksoy.de/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://alperenaksoy.de/en/series/"
+                />
+  </url><url>
+    <loc>https://alperenaksoy.de/en/tags/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de-DE"
+                href="https://alperenaksoy.de/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en-US"
+                href="https://alperenaksoy.de/en/tags/"
                 />
   </url>
 </urlset>

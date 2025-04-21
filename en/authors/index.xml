@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Authors on Alperen Aksoy</title>
-    <link>https://alperenaksoy.de/authors/</link>
+    <link>https://alperenaksoy.de/en/authors/</link>
     <description>Recent content in Authors on Alperen Aksoy</description>
     <generator>Hugo</generator>
-    <language>de-DE</language>
-    <atom:link href="https://alperenaksoy.de/authors/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-US</language>
+    <atom:link href="https://alperenaksoy.de/en/authors/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
