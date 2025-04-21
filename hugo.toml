@@ -56,10 +56,10 @@ style = "github-dark"
   weight = 2
   url = "https://instagram.com/alpislifee/"
 [[params.social]]
-  name = "Twitter"
-  icon = "fa-brands fa-x-twitter fa-2x"
+  name = "LinkedIn"
+  icon = "fa-brands fa-linkedin fa-2x"
   weight = 3
-  url = "https://twitter.com/johndoe/"
+  url = "https://www.linkedin.com/in/alperen-aksoy-9364aa2a8/"
 
 # Menu links
 [[menu.main]]
