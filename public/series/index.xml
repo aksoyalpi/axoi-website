@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Alperen Aksoy</title>
-    <link>https://mediumseagreen-cobra-673991.hostingersite.com/series/</link>
+    <link>https://alperenaksoy.de/series/</link>
     <description>Recent content in Series on Alperen Aksoy</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://mediumseagreen-cobra-673991.hostingersite.com/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://alperenaksoy.de/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
