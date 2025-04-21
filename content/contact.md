@@ -11,8 +11,7 @@ I'd love to hear from you — whether you have a question, want to collaborate, 
 
 You can reach me directly at:
 
-*`aksoyalpi@gmail.com`**  
-_(Replace with your actual email address)_
+*`aksoyalpi@gmail.com`*
 
 ---
 

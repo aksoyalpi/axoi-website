@@ -20,7 +20,7 @@ style = "github-dark"
   info = "Software Engineer"
   description = "Axoi Software Solutions Website"
   keywords = "blog,developer,personal,software,saas"
-  avatarurl = "images/avatar.jpg"
+  avatarurl = "static/images/avatar.jpg"
   #gravatar = "john.doe@example.com"
 
   faviconSVG = "/img/favicon.svg"
