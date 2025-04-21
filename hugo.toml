@@ -6,7 +6,7 @@ defaultcontentlanguage = "en"
 
 
 [pagination]
-pagerSize = 20
+pagerSize = 6
 
 #[services]
 #[services.disqus]
@@ -63,12 +63,12 @@ style = "github-dark"
   weight = 3
   url = "https://www.linkedin.com/in/alperen-aksoy-9364aa2a8/"
 
-[languages]
-  [languages.en]
-    languageCode = "en-US"
-    languageName = "English"
-    # Menu links
-    [[languages.en.menu.main]]
+ [languages.en]
+  languageCode = "en-US"
+  languageName = "English"
+
+# Menu links
+[[languages.en.menu.main]]
     name = "Blog"
     weight = 1
     url  = "posts/"
@@ -85,9 +85,16 @@ style = "github-dark"
   weight = 4
   url = "contact/"
 
+
 [languages.de]
 languageCode = "de-DE"
 languageName = "Deutsch"
+
+[languages.de.params]
+author = "Alperen Aksoy"
+info = "Softwareentwickler"
+description = "Webseite von Alperen Aksoy"
+keyword = "software,blog,saas,persönlich"
 
 [[languages.de.menu.main]]
   name = "Blog"
