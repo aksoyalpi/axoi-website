@@ -1,5 +1,5 @@
 baseurl = "http://www.example.com"
-title = "johndoe"
+title = "axoi"
 theme = "hugo-coder"
 languagecode = "en"
 defaultcontentlanguage = "en"
@@ -10,16 +10,16 @@ pagerSize = 20
 
 [services]
 [services.disqus]
-shortname = "yourdiscussshortname"
+shortname = "axoi-diqus"
 
 [markup.highlight]
 style = "github-dark"
 
 [params]
-  author = "John Doe"
-  info = "Full Stack DevOps and Magician"
-  description = "John Doe's personal website"
-  keywords = "blog,developer,personal"
+  author = "Alperen Aksoy"
+  info = "Software Engineer"
+  description = "Axoi Software Solutions Website"
+  keywords = "blog,developer,personal,software,saas"
   avatarurl = "images/avatar.jpg"
   #gravatar = "john.doe@example.com"
 
@@ -49,12 +49,12 @@ style = "github-dark"
   name = "Github"
   icon = "fa-brands fa-github fa-2x"
   weight = 1
-  url = "https://github.com/johndoe/"
+  url = "https://github.com/aksoyalpi/"
 [[params.social]]
-  name = "Gitlab"
-  icon = "fa-brands fa-gitlab fa-2x"
+  name = "Instagram"
+  icon = "fa-brands fa-instagram fa-2x"
   weight = 2
-  url = "https://gitlab.com/johndoe/"
+  url = "https://instagram.com/alpislifee/"
 [[params.social]]
   name = "Twitter"
   icon = "fa-brands fa-x-twitter fa-2x"
