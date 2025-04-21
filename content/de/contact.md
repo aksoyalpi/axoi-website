@@ -1,6 +1,6 @@
 +++
 title = "Kontakt"
-slug = "kontakt"
+slug = "contact"
 +++
 
 Ich freue mich, von dir zu hören – egal ob du eine Frage hast, mit mir zusammenarbeiten möchtest oder einfach nur *Salam* sagen willst! 🤝
