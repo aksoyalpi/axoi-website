@@ -56,8 +56,8 @@ I aim to build software with soul — tools that support your spiritual journey,
 Feel free to reach out or contribute to any of my open-source projects.  
 I love collaborating and sharing ideas!
 
-- GitHub: [github.com/your-username](https://github.com/your-username)
-- Ko-fi (support): [ko-fi.com/your-kofi](https://ko-fi.com/your-kofi)
+- GitHub: [github.com/aksoyalpi](https://github.com/aksoyalpi)
+- Ko-fi (support): [ko-fi.com/alaksoftware](https://ko-fi.com/alaksoftware)
 
 ---
 
