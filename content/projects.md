@@ -7,7 +7,6 @@ slug = "projects"
 
 **Quranify** is a beautifully minimalist app designed for listening to the Quran — completely free and ad-free. Enhance your spiritual experience with customizable nature sounds in the background.
 
----
 
 ## ✨ Features
 
@@ -24,7 +23,6 @@ slug = "projects"
 - 🌙 **Dark & Light Mode**: Switch between a clean light theme or a soothing dark mode.
 - 🆓 **Completely Free**: No ads, no subscriptions — just the Quran.
 
----
 
 ## 📱 Screenshots
 
@@ -34,12 +32,6 @@ slug = "projects"
 ![image](https://github.com/user-attachments/assets/ba152ba0-51cd-4625-ae57-1d5f46b13965)
 ![image](https://github.com/user-attachments/assets/7849a324-85ba-491d-87e6-dce26e1718a9)
 
-
-
-
-
----
-
 ## 🚀 Coming Soon
 Available for:
 
@@ -47,7 +39,6 @@ Available for:
 
 ⏳ iOS (in development)
 
----
 
 ## 🔧 Tech Stack
 Flutter (Cross-platform)
@@ -56,8 +47,51 @@ Offline-capable audio engine (no tracking or data collection)
 
 Simple and responsive UI
 
----
  
 See on [GitHub](https://github.com/aksoyalpi/Quranify-App)
 
-# Prayers
+---
+
+# 🕌 Prayers: Minimalist Prayer Times App
+
+A clean and user-friendly app for Muslim prayer times – simple, powerful, and multilingual.
+
+
+## ✨ Features
+
+- 🕰️ **Prayer Times**: Displays accurate times for Fajr, Dhuhr, Asr, Maghrib, and Isha.
+- ✅ **Check-off System**: Mark prayers as completed – stay on track throughout your day.
+- 🧭 **Qibla Direction**: Built-in compass to easily find the Qibla.
+- 🔔 **Notifications**: Get automatic reminders before each prayer.
+- 🌐 **Multilingual**: Available in **English**, **Turkish**, and **German**.
+- 🗓️ **Hijri & Gregorian Calendar**: See both Islamic and standard dates.
+- 🌓 **Dark & Light Mode**: Choose your preferred theme – day or night.
+
+
+## 📱 Screenshots
+
+![image](https://github.com/user-attachments/assets/96b6e198-7268-41b6-b444-8b208553e58a)
+![image](https://github.com/user-attachments/assets/abf3a264-5053-41e8-8365-0d7789cf7a30)
+![image](https://github.com/user-attachments/assets/546018a9-7422-4acd-a2ae-94ba5f06b9af)
+![image](https://github.com/user-attachments/assets/13490950-bd09-4011-a180-fd37c49fd7ea)
+
+
+## 🔧 Installation
+The app is currently free and ad-free.
+
+Coming soon for:
+
+✅ Android (Google Play) [Android](https://play.google.com/store/apps/details?id=com.alaksoftware.prayer_times&pcampaignid=web_share)
+
+⏳ iOS (App Store in progress)
+
+## 🌍 Localization
+The app supports the following languages:
+
+🇬🇧 English
+
+🇹🇷 Turkish
+
+🇩🇪 German
+
+See on [GitHub](https://github.com/aksoyalpi/Prayers-App)
