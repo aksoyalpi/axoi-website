@@ -30,7 +30,6 @@
 robocopy &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; /mir
 
 hugo server -t hugo-coder
-!!
 !
 import os
 
@@ -95,6 +94,180 @@ for filename in os.listdir(posts_dir):
   
 
 print(&#34;Markdown files processed and images copied successfully.&#34;)
+
+  Push to Github
+  
+    
+    Link to heading
+  
+
+# Step 8: Push the public folder to the hostinger branch using subtree split and force push
+echo &#34;Deploying to GitHub Hostinger...&#34;
+git subtree split --prefix public -b hostinger-deploy
+git push origin hostinger-deploy:hostinger --force
+git branch -D hostinger-deploy
+
+  The Mega Script
+  
+    
+    Link to heading
+  
+
+# PowerShell Script for Windows
+
+# Set variables for Obsidian to Hugo copy
+$sourcePath = &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;
+$destinationPath = &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;
+
+# Set Github repo 
+$myrepo = git@github.com:aksoyalpi/axoi-website.git
+
+# Set error handling
+$ErrorActionPreference = &#34;Stop&#34;
+Set-StrictMode -Version Latest
+
+# Change to the script&#39;s directory
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+Set-Location $ScriptDir
+
+# Check for required commands
+$requiredCommands = @(&#39;git&#39;, &#39;hugo&#39;)
+
+# Check for Python command (python or python3)
+if (Get-Command &#39;python&#39; -ErrorAction SilentlyContinue) {
+    $pythonCommand = &#39;python&#39;
+} elseif (Get-Command &#39;python3&#39; -ErrorAction SilentlyContinue) {
+    $pythonCommand = &#39;python3&#39;
+} else {
+    Write-Error &#34;Python is not installed or not in PATH.&#34;
+    exit 1
+}
+
+foreach ($cmd in $requiredCommands) {
+    if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
+        Write-Error &#34;$cmd is not installed or not in PATH.&#34;
+        exit 1
+    }
+}
+
+# Step 1: Check if Git is initialized, and initialize if necessary
+if (-not (Test-Path &#34;.git&#34;)) {
+    Write-Host &#34;Initializing Git repository...&#34;
+    git init
+    git remote add origin $myrepo
+} else {
+    Write-Host &#34;Git repository already initialized.&#34;
+    $remotes = git remote
+    if (-not ($remotes -contains &#39;origin&#39;)) {
+        Write-Host &#34;Adding remote origin...&#34;
+        git remote add origin $myrepo
+    }
+}
+
+# Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy
+Write-Host &#34;Syncing posts from Obsidian...&#34;
+
+if (-not (Test-Path $sourcePath)) {
+    Write-Error &#34;Source path does not exist: $sourcePath&#34;
+    exit 1
+}
+
+if (-not (Test-Path $destinationPath)) {
+    Write-Error &#34;Destination path does not exist: $destinationPath&#34;
+    exit 1
+}
+
+# Use Robocopy to mirror the directories
+$robocopyOptions = @(&#39;/MIR&#39;, &#39;/Z&#39;, &#39;/W:5&#39;, &#39;/R:3&#39;)
+$robocopyResult = robocopy $sourcePath $destinationPath @robocopyOptions
+
+if ($LASTEXITCODE -ge 8) {
+    Write-Error &#34;Robocopy failed with exit code $LASTEXITCODE&#34;
+    exit 1
+}
+
+# Step 3: Process Markdown files with Python script to handle image links
+Write-Host &#34;Processing image links in Markdown files...&#34;
+if (-not (Test-Path &#34;images.py&#34;)) {
+    Write-Error &#34;Python script images.py not found.&#34;
+    exit 1
+}
+
+# Execute the Python script
+try {
+    &amp; $pythonCommand images.py
+} catch {
+    Write-Error &#34;Failed to process image links.&#34;
+    exit 1
+}
+
+# Step 4: Build the Hugo site
+Write-Host &#34;Building the Hugo site...&#34;
+try {
+    hugo
+} catch {
+    Write-Error &#34;Hugo build failed.&#34;
+    exit 1
+}
+
+# Step 5: Add changes to Git
+Write-Host &#34;Staging changes for Git...&#34;
+$hasChanges = (git status --porcelain) -ne &#34;&#34;
+if (-not $hasChanges) {
+    Write-Host &#34;No changes to stage.&#34;
+} else {
+    git add .
+}
+
+# Step 6: Commit changes with a dynamic message
+$commitMessage = &#34;New Blog Post on $(Get-Date -Format &#39;yyyy-MM-dd HH:mm:ss&#39;)&#34;
+$hasStagedChanges = (git diff --cached --name-only) -ne &#34;&#34;
+if (-not $hasStagedChanges) {
+    Write-Host &#34;No changes to commit.&#34;
+} else {
+    Write-Host &#34;Committing changes...&#34;
+    git commit -m &#34;$commitMessage&#34;
+}
+
+# Step 7: Push all changes to the main branch
+Write-Host &#34;Deploying to GitHub Master...&#34;
+try {
+    git push origin master
+} catch {
+    Write-Error &#34;Failed to push to Master branch.&#34;
+    exit 1
+}
+
+# Step 8: Push the public folder to the hostinger branch using subtree split and force push
+Write-Host &#34;Deploying to GitHub Hostinger...&#34;
+
+# Check if the temporary branch exists and delete it
+$branchExists = git branch --list &#34;hostinger-deploy&#34;
+if ($branchExists) {
+    git branch -D hostinger-deploy
+}
+
+# Perform subtree split
+try {
+    git subtree split --prefix public -b hostinger-deploy
+} catch {
+    Write-Error &#34;Subtree split failed.&#34;
+    exit 1
+}
+
+# Push to hostinger branch with force
+try {
+    git push origin hostinger-deploy:hostinger --force
+} catch {
+    Write-Error &#34;Failed to push to hostinger branch.&#34;
+    git branch -D hostinger-deploy
+    exit 1
+}
+
+# Delete the temporary branch
+git branch -D hostinger-deploy
+
+Write-Host &#34;All done! Site synced, processed, committed, built, and deployed.&#34;
 ">
 <meta name="keywords" content="blog,developer,personal">
 
@@ -102,14 +275,14 @@ print(&#34;Markdown files processed and images copied successfully.&#34;)
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Blog Pipeline">
-  <meta name="twitter:description" content="ObisidianLink to headingPowerShellLink to headingrobocopy &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; /mir hugo server -t hugo-coder !! !
-import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; attachments_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments&#34; static_images_dir = r&#34;C:\Users\aksoy\dev\Website\axoi\static\images&#34; # Step 1: Process each markdown file in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): filepath = os.path.join(posts_dir, filename) with open(filepath, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png) images = re.findall(r&#39;\[\[([^]]*\.png)\]\]&#39;, content) # Step 3: Replace image links and ensure URLs are correctly formatted for image in images: # Prepare the Markdown-compatible link with %20 replacing spaces markdown_image = f&#34;![Image Description](/images/{image.replace(&#39; &#39;, &#39;%20&#39;)})&#34; content = content.replace(f&#34;[[{image}]]&#34;, markdown_image) # Step 4: Copy the image to the Hugo static/images directory if it exists image_source = os.path.join(attachments_dir, image) if os.path.exists(image_source): shutil.copy(image_source, static_images_dir) # Step 5: Write the updated content back to the markdown file with open(filepath, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(&#34;Markdown files processed and images copied successfully.&#34;)">
+  <meta name="twitter:description" content="ObisidianLink to headingPowerShellLink to headingrobocopy &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; /mir hugo server -t hugo-coder !
+import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; attachments_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments&#34; static_images_dir = r&#34;C:\Users\aksoy\dev\Website\axoi\static\images&#34; # Step 1: Process each markdown file in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): filepath = os.path.join(posts_dir, filename) with open(filepath, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png) images = re.findall(r&#39;\[\[([^]]*\.png)\]\]&#39;, content) # Step 3: Replace image links and ensure URLs are correctly formatted for image in images: # Prepare the Markdown-compatible link with %20 replacing spaces markdown_image = f&#34;![Image Description](/images/{image.replace(&#39; &#39;, &#39;%20&#39;)})&#34; content = content.replace(f&#34;[[{image}]]&#34;, markdown_image) # Step 4: Copy the image to the Hugo static/images directory if it exists image_source = os.path.join(attachments_dir, image) if os.path.exists(image_source): shutil.copy(image_source, static_images_dir) # Step 5: Write the updated content back to the markdown file with open(filepath, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(&#34;Markdown files processed and images copied successfully.&#34;) Push to GithubLink to heading# Step 8: Push the public folder to the hostinger branch using subtree split and force push echo &#34;Deploying to GitHub Hostinger...&#34; git subtree split --prefix public -b hostinger-deploy git push origin hostinger-deploy:hostinger --force git branch -D hostinger-deploy The Mega ScriptLink to heading# PowerShell Script for Windows # Set variables for Obsidian to Hugo copy $sourcePath = &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; $destinationPath = &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; # Set Github repo $myrepo = git@github.com:aksoyalpi/axoi-website.git # Set error handling $ErrorActionPreference = &#34;Stop&#34; Set-StrictMode -Version Latest # Change to the script&#39;s directory $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition Set-Location $ScriptDir # Check for required commands $requiredCommands = @(&#39;git&#39;, &#39;hugo&#39;) # Check for Python command (python or python3) if (Get-Command &#39;python&#39; -ErrorAction SilentlyContinue) { $pythonCommand = &#39;python&#39; } elseif (Get-Command &#39;python3&#39; -ErrorAction SilentlyContinue) { $pythonCommand = &#39;python3&#39; } else { Write-Error &#34;Python is not installed or not in PATH.&#34; exit 1 } foreach ($cmd in $requiredCommands) { if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) { Write-Error &#34;$cmd is not installed or not in PATH.&#34; exit 1 } } # Step 1: Check if Git is initialized, and initialize if necessary if (-not (Test-Path &#34;.git&#34;)) { Write-Host &#34;Initializing Git repository...&#34; git init git remote add origin $myrepo } else { Write-Host &#34;Git repository already initialized.&#34; $remotes = git remote if (-not ($remotes -contains &#39;origin&#39;)) { Write-Host &#34;Adding remote origin...&#34; git remote add origin $myrepo } } # Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy Write-Host &#34;Syncing posts from Obsidian...&#34; if (-not (Test-Path $sourcePath)) { Write-Error &#34;Source path does not exist: $sourcePath&#34; exit 1 } if (-not (Test-Path $destinationPath)) { Write-Error &#34;Destination path does not exist: $destinationPath&#34; exit 1 } # Use Robocopy to mirror the directories $robocopyOptions = @(&#39;/MIR&#39;, &#39;/Z&#39;, &#39;/W:5&#39;, &#39;/R:3&#39;) $robocopyResult = robocopy $sourcePath $destinationPath @robocopyOptions if ($LASTEXITCODE -ge 8) { Write-Error &#34;Robocopy failed with exit code $LASTEXITCODE&#34; exit 1 } # Step 3: Process Markdown files with Python script to handle image links Write-Host &#34;Processing image links in Markdown files...&#34; if (-not (Test-Path &#34;images.py&#34;)) { Write-Error &#34;Python script images.py not found.&#34; exit 1 } # Execute the Python script try { &amp; $pythonCommand images.py } catch { Write-Error &#34;Failed to process image links.&#34; exit 1 } # Step 4: Build the Hugo site Write-Host &#34;Building the Hugo site...&#34; try { hugo } catch { Write-Error &#34;Hugo build failed.&#34; exit 1 } # Step 5: Add changes to Git Write-Host &#34;Staging changes for Git...&#34; $hasChanges = (git status --porcelain) -ne &#34;&#34; if (-not $hasChanges) { Write-Host &#34;No changes to stage.&#34; } else { git add . } # Step 6: Commit changes with a dynamic message $commitMessage = &#34;New Blog Post on $(Get-Date -Format &#39;yyyy-MM-dd HH:mm:ss&#39;)&#34; $hasStagedChanges = (git diff --cached --name-only) -ne &#34;&#34; if (-not $hasStagedChanges) { Write-Host &#34;No changes to commit.&#34; } else { Write-Host &#34;Committing changes...&#34; git commit -m &#34;$commitMessage&#34; } # Step 7: Push all changes to the main branch Write-Host &#34;Deploying to GitHub Master...&#34; try { git push origin master } catch { Write-Error &#34;Failed to push to Master branch.&#34; exit 1 } # Step 8: Push the public folder to the hostinger branch using subtree split and force push Write-Host &#34;Deploying to GitHub Hostinger...&#34; # Check if the temporary branch exists and delete it $branchExists = git branch --list &#34;hostinger-deploy&#34; if ($branchExists) { git branch -D hostinger-deploy } # Perform subtree split try { git subtree split --prefix public -b hostinger-deploy } catch { Write-Error &#34;Subtree split failed.&#34; exit 1 } # Push to hostinger branch with force try { git push origin hostinger-deploy:hostinger --force } catch { Write-Error &#34;Failed to push to hostinger branch.&#34; git branch -D hostinger-deploy exit 1 } # Delete the temporary branch git branch -D hostinger-deploy Write-Host &#34;All done! Site synced, processed, committed, built, and deployed.&#34;">
 
 <meta property="og:url" content="http://www.example.com/posts/blog-pipeline/">
   <meta property="og:site_name" content="johndoe">
   <meta property="og:title" content="Blog Pipeline">
-  <meta property="og:description" content="ObisidianLink to headingPowerShellLink to headingrobocopy &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; /mir hugo server -t hugo-coder !! !
-import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; attachments_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments&#34; static_images_dir = r&#34;C:\Users\aksoy\dev\Website\axoi\static\images&#34; # Step 1: Process each markdown file in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): filepath = os.path.join(posts_dir, filename) with open(filepath, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png) images = re.findall(r&#39;\[\[([^]]*\.png)\]\]&#39;, content) # Step 3: Replace image links and ensure URLs are correctly formatted for image in images: # Prepare the Markdown-compatible link with %20 replacing spaces markdown_image = f&#34;![Image Description](/images/{image.replace(&#39; &#39;, &#39;%20&#39;)})&#34; content = content.replace(f&#34;[[{image}]]&#34;, markdown_image) # Step 4: Copy the image to the Hugo static/images directory if it exists image_source = os.path.join(attachments_dir, image) if os.path.exists(image_source): shutil.copy(image_source, static_images_dir) # Step 5: Write the updated content back to the markdown file with open(filepath, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(&#34;Markdown files processed and images copied successfully.&#34;)">
+  <meta property="og:description" content="ObisidianLink to headingPowerShellLink to headingrobocopy &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; /mir hugo server -t hugo-coder !
+import os import re import shutil # Paths (using raw strings to handle Windows backslashes correctly) posts_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; attachments_dir = r&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments&#34; static_images_dir = r&#34;C:\Users\aksoy\dev\Website\axoi\static\images&#34; # Step 1: Process each markdown file in the posts directory for filename in os.listdir(posts_dir): if filename.endswith(&#34;.md&#34;): filepath = os.path.join(posts_dir, filename) with open(filepath, &#34;r&#34;, encoding=&#34;utf-8&#34;) as file: content = file.read() # Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png) images = re.findall(r&#39;\[\[([^]]*\.png)\]\]&#39;, content) # Step 3: Replace image links and ensure URLs are correctly formatted for image in images: # Prepare the Markdown-compatible link with %20 replacing spaces markdown_image = f&#34;![Image Description](/images/{image.replace(&#39; &#39;, &#39;%20&#39;)})&#34; content = content.replace(f&#34;[[{image}]]&#34;, markdown_image) # Step 4: Copy the image to the Hugo static/images directory if it exists image_source = os.path.join(attachments_dir, image) if os.path.exists(image_source): shutil.copy(image_source, static_images_dir) # Step 5: Write the updated content back to the markdown file with open(filepath, &#34;w&#34;, encoding=&#34;utf-8&#34;) as file: file.write(content) print(&#34;Markdown files processed and images copied successfully.&#34;) Push to GithubLink to heading# Step 8: Push the public folder to the hostinger branch using subtree split and force push echo &#34;Deploying to GitHub Hostinger...&#34; git subtree split --prefix public -b hostinger-deploy git push origin hostinger-deploy:hostinger --force git branch -D hostinger-deploy The Mega ScriptLink to heading# PowerShell Script for Windows # Set variables for Obsidian to Hugo copy $sourcePath = &#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34; $destinationPath = &#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34; # Set Github repo $myrepo = git@github.com:aksoyalpi/axoi-website.git # Set error handling $ErrorActionPreference = &#34;Stop&#34; Set-StrictMode -Version Latest # Change to the script&#39;s directory $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition Set-Location $ScriptDir # Check for required commands $requiredCommands = @(&#39;git&#39;, &#39;hugo&#39;) # Check for Python command (python or python3) if (Get-Command &#39;python&#39; -ErrorAction SilentlyContinue) { $pythonCommand = &#39;python&#39; } elseif (Get-Command &#39;python3&#39; -ErrorAction SilentlyContinue) { $pythonCommand = &#39;python3&#39; } else { Write-Error &#34;Python is not installed or not in PATH.&#34; exit 1 } foreach ($cmd in $requiredCommands) { if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) { Write-Error &#34;$cmd is not installed or not in PATH.&#34; exit 1 } } # Step 1: Check if Git is initialized, and initialize if necessary if (-not (Test-Path &#34;.git&#34;)) { Write-Host &#34;Initializing Git repository...&#34; git init git remote add origin $myrepo } else { Write-Host &#34;Git repository already initialized.&#34; $remotes = git remote if (-not ($remotes -contains &#39;origin&#39;)) { Write-Host &#34;Adding remote origin...&#34; git remote add origin $myrepo } } # Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy Write-Host &#34;Syncing posts from Obsidian...&#34; if (-not (Test-Path $sourcePath)) { Write-Error &#34;Source path does not exist: $sourcePath&#34; exit 1 } if (-not (Test-Path $destinationPath)) { Write-Error &#34;Destination path does not exist: $destinationPath&#34; exit 1 } # Use Robocopy to mirror the directories $robocopyOptions = @(&#39;/MIR&#39;, &#39;/Z&#39;, &#39;/W:5&#39;, &#39;/R:3&#39;) $robocopyResult = robocopy $sourcePath $destinationPath @robocopyOptions if ($LASTEXITCODE -ge 8) { Write-Error &#34;Robocopy failed with exit code $LASTEXITCODE&#34; exit 1 } # Step 3: Process Markdown files with Python script to handle image links Write-Host &#34;Processing image links in Markdown files...&#34; if (-not (Test-Path &#34;images.py&#34;)) { Write-Error &#34;Python script images.py not found.&#34; exit 1 } # Execute the Python script try { &amp; $pythonCommand images.py } catch { Write-Error &#34;Failed to process image links.&#34; exit 1 } # Step 4: Build the Hugo site Write-Host &#34;Building the Hugo site...&#34; try { hugo } catch { Write-Error &#34;Hugo build failed.&#34; exit 1 } # Step 5: Add changes to Git Write-Host &#34;Staging changes for Git...&#34; $hasChanges = (git status --porcelain) -ne &#34;&#34; if (-not $hasChanges) { Write-Host &#34;No changes to stage.&#34; } else { git add . } # Step 6: Commit changes with a dynamic message $commitMessage = &#34;New Blog Post on $(Get-Date -Format &#39;yyyy-MM-dd HH:mm:ss&#39;)&#34; $hasStagedChanges = (git diff --cached --name-only) -ne &#34;&#34; if (-not $hasStagedChanges) { Write-Host &#34;No changes to commit.&#34; } else { Write-Host &#34;Committing changes...&#34; git commit -m &#34;$commitMessage&#34; } # Step 7: Push all changes to the main branch Write-Host &#34;Deploying to GitHub Master...&#34; try { git push origin master } catch { Write-Error &#34;Failed to push to Master branch.&#34; exit 1 } # Step 8: Push the public folder to the hostinger branch using subtree split and force push Write-Host &#34;Deploying to GitHub Hostinger...&#34; # Check if the temporary branch exists and delete it $branchExists = git branch --list &#34;hostinger-deploy&#34; if ($branchExists) { git branch -D hostinger-deploy } # Perform subtree split try { git subtree split --prefix public -b hostinger-deploy } catch { Write-Error &#34;Subtree split failed.&#34; exit 1 } # Push to hostinger branch with force try { git push origin hostinger-deploy:hostinger --force } catch { Write-Error &#34;Failed to push to hostinger branch.&#34; git branch -D hostinger-deploy exit 1 } # Delete the temporary branch git branch -D hostinger-deploy Write-Host &#34;All done! Site synced, processed, committed, built, and deployed.&#34;">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -239,7 +412,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
             </span>
             <span class="reading-time">
               <i class="fa-solid fa-clock" aria-hidden="true"></i>
-              One-minute read
+              4-minute read
             </span>
           </div>
           
@@ -276,8 +449,7 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>robocopy <span style="color:#a5d6ff">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span> <span style="color:#a5d6ff">&#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;</span> /mir
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>hugo server -t hugo-coder
-</span></span></code></pre></div><p>!<img src="/images/Pasted%20image%2020250420201039.png" alt="Image Description">!<img src="/images/Pasted%20image%2020250420201047.png" alt="Image Description">
-!<img src="/images/Pasted%20image%2020250420201259.png" alt="Image Description"></p>
+</span></span></code></pre></div><p>!<img src="/images/Pasted%20image%2020250420201259.png" alt="Image Description"></p>
 <div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">os</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">re</span>
@@ -341,6 +513,180 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
 </span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>print(<span style="color:#a5d6ff">&#34;Markdown files processed and images copied successfully.&#34;</span>)
+</span></span></code></pre></div><h1 id="push-to-github">
+  Push to Github
+  <a class="heading-link" href="#push-to-github">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span style="display:flex;"><span>git subtree split --prefix public -b hostinger-deploy
+</span></span><span style="display:flex;"><span>git push origin hostinger-deploy:hostinger --force
+</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
+</span></span></code></pre></div><h1 id="the-mega-script">
+  The Mega Script
+  <a class="heading-link" href="#the-mega-script">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h1>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># PowerShell Script for Windows</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set variables for Obsidian to Hugo copy</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$sourcePath</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$destinationPath</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set Github repo </span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$myrepo</span> <span style="color:#ff7b72;font-weight:bold">=</span> git@github.com:aksoyalpi/axoi-website.git
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set error handling</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$ErrorActionPreference</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Stop&#34;</span>
+</span></span><span style="display:flex;"><span>Set-StrictMode -Version Latest
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Change to the script&#39;s directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$ScriptDir</span> <span style="color:#ff7b72;font-weight:bold">=</span> Split-Path -Parent <span style="color:#79c0ff">$MyInvocation</span>.MyCommand.Definition
+</span></span><span style="display:flex;"><span>Set-Location <span style="color:#79c0ff">$ScriptDir</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for required commands</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$requiredCommands</span> <span style="color:#ff7b72;font-weight:bold">=</span> @<span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#a5d6ff">&#39;git&#39;</span>, <span style="color:#a5d6ff">&#39;hugo&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for Python command (python or python3)</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#a5d6ff">&#39;python&#39;</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$pythonCommand</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#39;python&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> elseif <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#a5d6ff">&#39;python3&#39;</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$pythonCommand</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#39;python3&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Python is not installed or not in PATH.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>foreach <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$cmd</span> in <span style="color:#79c0ff">$requiredCommands</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#79c0ff">$cmd</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        Write-Error <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$cmd</span><span style="color:#a5d6ff"> is not installed or not in PATH.&#34;</span>
+</span></span><span style="display:flex;"><span>        exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 1: Check if Git is initialized, and initialize if necessary</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#a5d6ff">&#34;.git&#34;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Initializing Git repository...&#34;</span>
+</span></span><span style="display:flex;"><span>    git init
+</span></span><span style="display:flex;"><span>    git remote add origin <span style="color:#79c0ff">$myrepo</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Git repository already initialized.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$remotes</span> <span style="color:#ff7b72;font-weight:bold">=</span> git remote
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$remotes</span> -contains <span style="color:#a5d6ff">&#39;origin&#39;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>        Write-Host <span style="color:#a5d6ff">&#34;Adding remote origin...&#34;</span>
+</span></span><span style="display:flex;"><span>        git remote add origin <span style="color:#79c0ff">$myrepo</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy</span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Syncing posts from Obsidian...&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#79c0ff">$sourcePath</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Source path does not exist: </span><span style="color:#79c0ff">$sourcePath</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#79c0ff">$destinationPath</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Destination path does not exist: </span><span style="color:#79c0ff">$destinationPath</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Use Robocopy to mirror the directories</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$robocopyOptions</span> <span style="color:#ff7b72;font-weight:bold">=</span> @<span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#a5d6ff">&#39;/MIR&#39;</span>, <span style="color:#a5d6ff">&#39;/Z&#39;</span>, <span style="color:#a5d6ff">&#39;/W:5&#39;</span>, <span style="color:#a5d6ff">&#39;/R:3&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$robocopyResult</span> <span style="color:#ff7b72;font-weight:bold">=</span> robocopy <span style="color:#79c0ff">$sourcePath</span> <span style="color:#79c0ff">$destinationPath</span> @robocopyOptions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$LASTEXITCODE</span> -ge 8<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Robocopy failed with exit code </span><span style="color:#79c0ff">$LASTEXITCODE</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 3: Process Markdown files with Python script to handle image links</span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Processing image links in Markdown files...&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#a5d6ff">&#34;images.py&#34;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Python script images.py not found.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Execute the Python script</span>
+</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    &amp; <span style="color:#79c0ff">$pythonCommand</span> images.py
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to process image links.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 4: Build the Hugo site</span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Building the Hugo site...&#34;</span>
+</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    hugo
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Hugo build failed.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 5: Add changes to Git</span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Staging changes for Git...&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$hasChanges</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">(</span>git status --porcelain<span style="color:#ff7b72;font-weight:bold">)</span> -ne <span style="color:#a5d6ff">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#79c0ff">$hasChanges</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;No changes to stage.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    git add .
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 6: Commit changes with a dynamic message</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$commitMessage</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;New Blog Post on </span><span style="color:#ff7b72">$(</span>Get-Date -Format <span style="color:#a5d6ff">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span style="color:#ff7b72">)</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$hasStagedChanges</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">(</span>git diff --cached --name-only<span style="color:#ff7b72;font-weight:bold">)</span> -ne <span style="color:#a5d6ff">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#79c0ff">$hasStagedChanges</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;No changes to commit.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Committing changes...&#34;</span>
+</span></span><span style="display:flex;"><span>    git commit -m <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$commitMessage</span><span style="color:#a5d6ff">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 7: Push all changes to the main branch</span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Deploying to GitHub Master...&#34;</span>
+</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    git push origin master
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to push to Master branch.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check if the temporary branch exists and delete it</span>
+</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$branchExists</span> <span style="color:#ff7b72;font-weight:bold">=</span> git branch --list <span style="color:#a5d6ff">&#34;hostinger-deploy&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$branchExists</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Perform subtree split</span>
+</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    git subtree split --prefix public -b hostinger-deploy
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Subtree split failed.&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Push to hostinger branch with force</span>
+</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    git push origin hostinger-deploy:hostinger --force
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to push to hostinger branch.&#34;</span>
+</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
+</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Delete the temporary branch</span>
+</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
 </span></span></code></pre></div>
       </div>
 
