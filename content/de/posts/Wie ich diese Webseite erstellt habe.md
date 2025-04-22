@@ -1,5 +1,5 @@
 ---
-title: Wie Ich Diese Webseite Erstell Habe
+title: Wie Ich Diese Webseite Erstellt Habe
 date: 2025-04-20
 draft: false
 tags:
