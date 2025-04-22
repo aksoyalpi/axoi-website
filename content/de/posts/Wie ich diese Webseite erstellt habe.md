@@ -1,10 +1,12 @@
 ---
-title: Blog Pipeline
+title: Wie Ich Diese Webseite Erstell Habe
 date: 2025-04-20
 draft: false
 tags:
-  - axoi
-  - blog
+  - obsidian
+  - hugo
+  - github
+  - webseite
 ---
 
 Diese Webseite wurde mithilfe von [Obisidian](https://obsidian.md/), [Hugo](https://gohugo.io/), [Hostinger](https://www.hostinger.com/de) und [GitHub](https://github.com/dashboard) erstellt.
@@ -21,7 +23,7 @@ Wir gehen wie folgt vor:
 1. Lade dir Obisidan unter [[https://obsidian.md/]] herunter
 2. Erstelle einen neuen Ordner in Obisidan für die Blog-Beiträge
 	- Merke dir den Speicherort, indem du auf den Ordner einen Rechtsklick ausführst und auf ,,Show in system explorer" drückst
-![[Pasted image 20250422071617.png]]
+!![Image Description](/images/Pasted%20image%2020250422071617.png)
 
 Das wäre es zunächst schon für Obisidan, im nächsten Schritt richten wir Hugo ein.
 
@@ -232,7 +234,7 @@ for dateiname in os.listdir(beitraege_ordner):
         with open(dateipfad, "r", encoding="utf-8") as datei:
             inhalt = datei.read()
         
-        # Schritt 2: Finde alle Bildverweise im Format [[Bildname.png]]
+        # Schritt 2: Finde alle Bildverweise im Format ![Image Description](/images/Bildname.png)
         bilder = re.findall(r'\[\[([^]]*\.png)\]\]', inhalt)
         
         # Schritt 3: Ersetze Bildverweise und formatiere URLs korrekt
@@ -275,22 +277,22 @@ git branch -D hostinger-deploy
 # Hostinger einrichten
 - Erstelle zunächst einen Hostinger account unter [[https://www.hostinger.com/de]]
 - Erstelle eine neue Webseite (als HTML!) und kaufe eine Domain (oder wähle zunächst eine temporäre Domain aus)
-![[Pasted image 20250422080451.png]]
+!![Image Description](/images/Pasted%20image%2020250422080451.png)
 
 ## Mit GitHub synchronisieren
 - Gehe anschließend auf den Dashboard der Webseite
 - Klicke auf "Erweitert" > "GIT"
 
-![[Pasted image 20250422080705.png]]
+!![Image Description](/images/Pasted%20image%2020250422080705.png)
 - Kopiere dir den SSH-Key aus Hostinger 
 	- Füge den SSH-Key aus Hostinger in GitHub unter Profil > Einstellungen > SSH and GPG keys hinzu (Titel kannst du frei wählen)
 
-![[Pasted image 20250422080928.png]]
+!![Image Description](/images/Pasted%20image%2020250422080928.png)
 
 - Gehe zurück zu Hostinger und erstelle ein neues Repository
 	- drücke anschließend auf "Automatische Bereitstellung", damit die nicht mehr manuell auf "Bereitstellen" drücken musst, falls du Änderungen auf der Webseite vornimmst
 
-![[Pasted image 20250422081231.png]]
+!![Image Description](/images/Pasted%20image%2020250422081231.png)
 
 # Mega Skript
 - um nur noch ein Skript auszuführen, wenn du Änderungen an der Webseite vornimmst, gibt es ein Skript, welche alle vorherigen Schritte einbezieht
