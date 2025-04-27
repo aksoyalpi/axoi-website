@@ -590,4 +590,5 @@ echo "All done! Site synced, processed, committed, built, and deployed."
 ---
 
 Die Idee zu diesem Projekt habe ich von folgendem Video
-{{< youtube dnE7c0ELEH8&t=1704s >}}
+
+{{< youtube id=dnE7c0ELEH8&t=1704s >}}
