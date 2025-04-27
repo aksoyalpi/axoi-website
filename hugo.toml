@@ -34,12 +34,11 @@ unsafe = true
   keywords = "blog,developer,personal,software,saas"
   avatarurl = "images/profile.png"
   since = 2022
-  favicon = "/static/images/favicon.svg"
   #gravatar = "john.doe@example.com"
 
-  faviconSVG = "/img/favicon.svg"
-  favicon_32 = "/img/favicon-32x32.png"
-  favicon_16 = "/img/favicon-16x16.png"
+  faviconSVG = "/images/favicon.svg"
+  favicon_32 = "/images/favicon-32x32.png"
+  favicon_16 = "/images/favicon-16x16.png"
 
   # since = 2019
   # Git Commit in Footer, uncomment the line below to enable it
