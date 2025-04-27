@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WSL on Alperen Aksoy</title>
+    <link>https://alperenaksoy.de/tags/wsl/</link>
+    <description>Recent content in WSL on Alperen Aksoy</description>
+    <generator>Hugo</generator>
+    <language>de-DE</language>
+    <lastBuildDate>Sun, 27 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://alperenaksoy.de/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Wie du Linux unter Windows (WSL) RICHTIG verwendest!</title>
+      <link>https://alperenaksoy.de/posts/wie-du-linux-unter-windows-wsl-richtig-verwendest/</link>
+      <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://alperenaksoy.de/posts/wie-du-linux-unter-windows-wsl-richtig-verwendest/</guid>
+      <description>&lt;h1 id=&#34;windows-subsystem-linux&#34;&gt;&#xD;&#xA;  Windows Subsystem Linux&#xD;&#xA;  &lt;a class=&#34;heading-link&#34; href=&#34;#windows-subsystem-linux&#34;&gt;&#xD;&#xA;    &lt;i class=&#34;fa-solid fa-link&#34; aria-hidden=&#34;true&#34; title=&#34;Link zu Überschrift&#34;&gt;&lt;/i&gt;&#xD;&#xA;    &lt;span class=&#34;sr-only&#34;&gt;Link zu Überschrift&lt;/span&gt;&#xD;&#xA;  &lt;/a&gt;&#xD;&#xA;&lt;/h1&gt;&#xD;&#xA;&lt;p&gt;Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, &amp;hellip;) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.&#xA;!&lt;img src=&#34;https://alperenaksoy.de/images/Pasted%20image%2020250427070055.png&#34; alt=&#34;Image Description&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Um WSL2 auf Windows zu verwenden, ist folgendes möglich&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hardware 64-bit&lt;/li&gt;&#xA;&lt;li&gt;min. 4GB Ram&lt;/li&gt;&#xA;&lt;li&gt;Virtualization muss aktiviert sein&lt;/li&gt;&#xA;&lt;li&gt;Windows 11&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&amp;ndash;&amp;gt; All dies sollte bei den meisten Leuten bereits passen&lt;/p&gt;&#xA;&lt;p&gt;Aber warum sollte man Linux unter Windows benutzen&amp;hellip;?&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

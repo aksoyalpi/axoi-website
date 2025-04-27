@@ -1,7 +1,7 @@
 ---
 title: Wie du Linux unter Windows (WSL) RICHTIG verwendest!
 date: 2025-04-27
-draft: true
+draft: false
 tags:
   - WSL
   - Linux
@@ -11,7 +11,7 @@ tags:
 ---
 # Windows Subsystem Linux
 Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, ...) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.
-![[Pasted image 20250427070055.png]]
+!![Image Description](/images/Pasted%20image%2020250427070055.png)
 
 Um WSL2 auf Windows zu verwenden, ist folgendes möglich
 - Hardware 64-bit
@@ -59,7 +59,7 @@ wsl -d kali-linux # installiere beispielsweise kali Distribution
 - Es ist ebenso möglich WSL Distributionen über den Microsoft Store herunterzuladen
 	- Ja, das geht wirklich
 
-![[Pasted image 20250427063914.png]]
+!![Image Description](/images/Pasted%20image%2020250427063914.png)
 
 
 ```shell
@@ -92,7 +92,7 @@ wsl cat
 
 Ist das nicht geil
 Die Betriebssysteme arbeiten quasi Hand in Hand
-![[Pasted image 20250427064653.png]]
+!![Image Description](/images/Pasted%20image%2020250427064653.png)
 
 ---
 # Exkursion: spiderfoot
@@ -159,7 +159,7 @@ kex # erzeuge Umgebung
 ```
 - F8 für Einstellungen
 - `kex --win --stop` zum stoppen oder einfach ausloggen
-![[Pasted image 20250427065644.png]]
+!![Image Description](/images/Pasted%20image%2020250427065644.png)
 ---
 
 ## WSL Plugin für VSCode
