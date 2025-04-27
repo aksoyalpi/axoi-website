@@ -7,7 +7,6 @@ slug = "projects"
 
 **Quranify** ist eine wunderschön minimalistische App zum Hören des Quran – komplett kostenlos und werbefrei. Verbessere dein spirituelles Erlebnis mit individuell anpassbaren Naturklängen im Hintergrund.
 
----
 
 ## ✨ Funktionen
 
@@ -24,20 +23,17 @@ slug = "projects"
 - 🌙 **Hell- & Dunkelmodus**: Wähle zwischen hellem oder beruhigendem dunklen Design.
 - 🆓 **Komplett kostenlos**: Keine Werbung, keine Abos – nur der Quran.
 
----
 
 ## 📱 Screenshots
 
 ![quranify_monochrome](https://github.com/user-attachments/assets/47b0de35-c6c7-4b3e-bfed-cb7f2b2abb78)
 
----
 
 ## 🚀 Verfügbarkeit
 
 - ✅ Android (Google Play): [Jetzt herunterladen](https://play.google.com/store/apps/details?id=com.alaksoftware.quranify2&pcampaignid=web_share)  
 - ⏳ iOS (in Entwicklung)
 
----
 
 ## 🔧 Technologien
 
@@ -54,7 +50,6 @@ slug = "projects"
 
 **Prayers** ist eine benutzerfreundliche App für muslimische Gebetszeiten – übersichtlich, leistungsstark und mehrsprachig.
 
----
 
 ## ✨ Funktionen
 
@@ -66,20 +61,17 @@ slug = "projects"
 - 📅 **Islamischer & Gregorianischer Kalender**.
 - 🌓 **Hell- & Dunkelmodus**.
 
----
 
 ## 📱 Screenshots
 
 ![marketing_colorful_prayers](https://github.com/user-attachments/assets/d1a98cbb-c715-4df5-97c4-a1097d976e49)
 
----
 
 ## 🚀 Verfügbarkeit
 
 - ✅ Android (Google Play): [Jetzt herunterladen](https://play.google.com/store/apps/details?id=com.alaksoftware.prayer_times&pcampaignid=web_share)  
 - ⏳ iOS (App Store in Vorbereitung)
 
----
 
 ## 🌍 Sprachen
 

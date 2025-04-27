@@ -8,7 +8,7 @@ author = "Alperen Aksoy"
 
 # Wer ich bin
 
-Salam! Ich bin ein leidenschaftlicher Entwickler mit dem Fokus auf minimalistische, nützliche und benutzerfreundliche Apps – besonders für die muslimische Community. Mir ist wichtig, Software zu entwickeln, die einfach ist, deine Privatsphäre respektiert und dir wirklich einen Mehrwert bietet.
+Hi! Ich bin ein leidenschaftlicher Entwickler mit dem Fokus auf minimalistische, nützliche und benutzerfreundliche Apps – besonders für die muslimische Community. Mir ist wichtig, Software zu entwickeln, die einfach ist, deine Privatsphäre respektiert und dir wirklich einen Mehrwert bietet.
 
 Ich entwickle Apps, die:
 
@@ -45,7 +45,7 @@ Eine entspannende und fokussierte App zum Hören des Qurans.
 
 # Meine Philosophie
 
-> _„Technologie sollte dein Leben bereichern – nicht dich ablenken.“_
+> _„Technologie sollte dein Leben bereichern – dich nicht ablenken.“_
 
 Ich entwickle Software mit Herz – Tools, die deine spirituelle Reise unterstützen, ohne deine Daten zu verkaufen oder deine Aufmerksamkeit zu stehlen.
 
