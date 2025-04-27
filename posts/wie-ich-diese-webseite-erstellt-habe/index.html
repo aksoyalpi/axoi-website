@@ -289,12 +289,12 @@ Dazu sind folgende Schritte nötig:</p>
 </li>
 <li>Teste, ob alles funktioniert hat (Nutze die PowerShell, falls du unter Windows arbeitest):</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo version
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo version
 </span></span></code></pre></div><ul>
 <li>Erstelle eine neue Seite</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site websitename
-</span></span><span style="display:flex;"><span>cd websitename
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">hugo new site websitename
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> websitename
 </span></span></code></pre></div><h2 id="installiere-ein-hugo-theme">
   Installiere ein Hugo Theme
   <a class="heading-link" href="#installiere-ein-hugo-theme">
@@ -313,16 +313,16 @@ Dazu sind folgende Schritte nötig:</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Initialisere git repository (in deinem Hugo Ordner)</span>
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Setze globale Variablen, username und mail, für git</span>
-</span></span><span style="display:flex;"><span>git config --global user.name <span style="color:#a5d6ff">&#34;Dein Name&#34;</span>
-</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#a5d6ff">&#34;deine.email@beispiel.de&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Installiere ein Theme (in meinem Fall hugo-coder)</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Nach dem Befehl sollte es im Hugo themes Ordner zu finden sein</span>
-</span></span><span style="display:flex;"><span>git submodule add https://github.com/luizdepra/hugo-coder.git
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Initialisere git repository (in deinem Hugo Ordner)</span>
+</span></span><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Setze globale Variablen, username und mail, für git</span>
+</span></span><span class="line"><span class="cl">git config --global user.name <span class="s2">&#34;Dein Name&#34;</span>
+</span></span><span class="line"><span class="cl">git config --global user.email <span class="s2">&#34;deine.email@beispiel.de&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Installiere ein Theme (in meinem Fall hugo-coder)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Nach dem Befehl sollte es im Hugo themes Ordner zu finden sein</span>
+</span></span><span class="line"><span class="cl">git submodule add https://github.com/luizdepra/hugo-coder.git
 </span></span></code></pre></div><h2 id="konfiguriere-hugo">
   Konfiguriere Hugo
   <a class="heading-link" href="#konfiguriere-hugo">
@@ -340,118 +340,118 @@ Dazu sind folgende Schritte nötig:</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>baseurl = <span style="color:#a5d6ff">&#34;https://alperenaksoy.de/&#34;</span>
-</span></span><span style="display:flex;"><span>title = <span style="color:#a5d6ff">&#34;Alperen Aksoy&#34;</span>
-</span></span><span style="display:flex;"><span>theme = <span style="color:#a5d6ff">&#34;hugo-coder&#34;</span>
-</span></span><span style="display:flex;"><span>languagecode = <span style="color:#a5d6ff">&#34;de&#34;</span>
-</span></span><span style="display:flex;"><span>defaultcontentlanguage = <span style="color:#a5d6ff">&#34;de&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[pagination]
-</span></span><span style="display:flex;"><span>pagerSize = <span style="color:#a5d6ff">6</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#[services]</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#[services.disqus]</span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic">#shortname = &#34;axoi-diqus&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[markup.highlight]
-</span></span><span style="display:flex;"><span>style = <span style="color:#a5d6ff">&#34;github-dark&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[params]
-</span></span><span style="display:flex;"><span>  author = <span style="color:#a5d6ff">&#34;Alperen Aksoy&#34;</span>
-</span></span><span style="display:flex;"><span>  info = [<span style="color:#a5d6ff">&#34;Software Engineer&#34;</span>, <span style="color:#a5d6ff">&#34;Mobile App Developer&#34;</span>]
-</span></span><span style="display:flex;"><span>  description = <span style="color:#a5d6ff">&#34;Axoi Software Solutions Website&#34;</span>
-</span></span><span style="display:flex;"><span>  keywords = <span style="color:#a5d6ff">&#34;blog,developer,personal,software,saas&#34;</span>
-</span></span><span style="display:flex;"><span>  avatarurl = <span style="color:#a5d6ff">&#34;images/profile.png&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic">#gravatar = &#34;john.doe@example.com&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  faviconSVG = <span style="color:#a5d6ff">&#34;/img/favicon.svg&#34;</span>
-</span></span><span style="display:flex;"><span>  favicon_32 = <span style="color:#a5d6ff">&#34;/img/favicon-32x32.png&#34;</span>
-</span></span><span style="display:flex;"><span>  favicon_16 = <span style="color:#a5d6ff">&#34;/img/favicon-16x16.png&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic"># since = 2019</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic"># Git Commit in Footer, uncomment the line below to enable it</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic"># commit = &#34;https://github.com/luizdepra/hugo-coder/tree/&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  enableTwemoji = <span style="color:#79c0ff">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  colorScheme = <span style="color:#a5d6ff">&#34;auto&#34;</span>
-</span></span><span style="display:flex;"><span>  hidecolorschemetoggle = <span style="color:#79c0ff">false</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic"># customCSS = [&#34;css/custom.css&#34;]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic"># customSCSS = [&#34;scss/custom.scss&#34;]</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8b949e;font-style:italic"># customJS = [&#34;js/custom.js&#34;]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[taxonomies]
-</span></span><span style="display:flex;"><span>  category = <span style="color:#a5d6ff">&#34;categories&#34;</span>
-</span></span><span style="display:flex;"><span>  series = <span style="color:#a5d6ff">&#34;series&#34;</span>
-</span></span><span style="display:flex;"><span>  tag = <span style="color:#a5d6ff">&#34;tags&#34;</span>
-</span></span><span style="display:flex;"><span>  author = <span style="color:#a5d6ff">&#34;authors&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Social links</span>
-</span></span><span style="display:flex;"><span>[[params.social]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Github&#34;</span>
-</span></span><span style="display:flex;"><span>  icon = <span style="color:#a5d6ff">&#34;fa-brands fa-github fa-2x&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;https://github.com/aksoyalpi/&#34;</span>
-</span></span><span style="display:flex;"><span>[[params.social]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Instagram&#34;</span>
-</span></span><span style="display:flex;"><span>  icon = <span style="color:#a5d6ff">&#34;fa-brands fa-instagram fa-2x&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">2</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;https://instagram.com/alpislifee/&#34;</span>
-</span></span><span style="display:flex;"><span>[[params.social]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;LinkedIn&#34;</span>
-</span></span><span style="display:flex;"><span>  icon = <span style="color:#a5d6ff">&#34;fa-brands fa-linkedin fa-2x&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">3</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;https://www.linkedin.com/in/alperen-aksoy-9364aa2a8/&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span> [languages.en]
-</span></span><span style="display:flex;"><span>  contentDir = <span style="color:#a5d6ff">&#34;content/en&#34;</span>
-</span></span><span style="display:flex;"><span>  languageCode = <span style="color:#a5d6ff">&#34;en-US&#34;</span>
-</span></span><span style="display:flex;"><span>  languageName = <span style="color:#a5d6ff">&#34;English&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Menu links</span>
-</span></span><span style="display:flex;"><span>[[languages.en.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;About&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">2</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;about/&#34;</span>
-</span></span><span style="display:flex;"><span>[[languages.en.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Projects&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">3</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;projects/&#34;</span>
-</span></span><span style="display:flex;"><span>[[languages.en.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Contact&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">4</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;contact/&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[languages.de]
-</span></span><span style="display:flex;"><span>contentDir = <span style="color:#a5d6ff">&#34;content/de&#34;</span>
-</span></span><span style="display:flex;"><span>languageCode = <span style="color:#a5d6ff">&#34;de-DE&#34;</span>
-</span></span><span style="display:flex;"><span>languageName = <span style="color:#a5d6ff">&#34;Deutsch&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[languages.de.params]
-</span></span><span style="display:flex;"><span>author = <span style="color:#a5d6ff">&#34;Alperen Aksoy&#34;</span>
-</span></span><span style="display:flex;"><span>info = [<span style="color:#a5d6ff">&#34;Softwareentwickler&#34;</span>, <span style="color:#a5d6ff">&#34;Mobile App-Entwicklung&#34;</span>]
-</span></span><span style="display:flex;"><span>description = <span style="color:#a5d6ff">&#34;Webseite von Alperen Aksoy&#34;</span>
-</span></span><span style="display:flex;"><span>keyword = <span style="color:#a5d6ff">&#34;software,blog,saas,persÃ¶nlich&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[[languages.de.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Blog&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span>  url  = <span style="color:#a5d6ff">&#34;posts/&#34;</span>
-</span></span><span style="display:flex;"><span>[[languages.de.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Ãœber&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">2</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;about/&#34;</span>
-</span></span><span style="display:flex;"><span>[[languages.de.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Projekte&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">3</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;projects/&#34;</span>
-</span></span><span style="display:flex;"><span>[[languages.de.menu.main]]
-</span></span><span style="display:flex;"><span>  name = <span style="color:#a5d6ff">&#34;Kontakt&#34;</span>
-</span></span><span style="display:flex;"><span>  weight = <span style="color:#a5d6ff">4</span>
-</span></span><span style="display:flex;"><span>  url = <span style="color:#a5d6ff">&#34;contact/&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="nx">baseurl</span> <span class="p">=</span> <span class="s2">&#34;https://alperenaksoy.de/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;Alperen Aksoy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">theme</span> <span class="p">=</span> <span class="s2">&#34;hugo-coder&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">languagecode</span> <span class="p">=</span> <span class="s2">&#34;de&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">defaultcontentlanguage</span> <span class="p">=</span> <span class="s2">&#34;de&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">pagination</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">pagerSize</span> <span class="p">=</span> <span class="mi">6</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#[services]</span>
+</span></span><span class="line"><span class="cl"><span class="c">#[services.disqus]</span>
+</span></span><span class="line"><span class="cl"><span class="c">#shortname = &#34;axoi-diqus&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">markup</span><span class="p">.</span><span class="nx">highlight</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">style</span> <span class="p">=</span> <span class="s2">&#34;github-dark&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">author</span> <span class="p">=</span> <span class="s2">&#34;Alperen Aksoy&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">info</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;Software Engineer&#34;</span><span class="p">,</span> <span class="s2">&#34;Mobile App Developer&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;Axoi Software Solutions Website&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">keywords</span> <span class="p">=</span> <span class="s2">&#34;blog,developer,personal,software,saas&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">avatarurl</span> <span class="p">=</span> <span class="s2">&#34;images/profile.png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="c">#gravatar = &#34;john.doe@example.com&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">faviconSVG</span> <span class="p">=</span> <span class="s2">&#34;/img/favicon.svg&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">favicon_32</span> <span class="p">=</span> <span class="s2">&#34;/img/favicon-32x32.png&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">favicon_16</span> <span class="p">=</span> <span class="s2">&#34;/img/favicon-16x16.png&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c"># since = 2019</span>
+</span></span><span class="line"><span class="cl">  <span class="c"># Git Commit in Footer, uncomment the line below to enable it</span>
+</span></span><span class="line"><span class="cl">  <span class="c"># commit = &#34;https://github.com/luizdepra/hugo-coder/tree/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">enableTwemoji</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">colorScheme</span> <span class="p">=</span> <span class="s2">&#34;auto&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">hidecolorschemetoggle</span> <span class="p">=</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c"># customCSS = [&#34;css/custom.css&#34;]</span>
+</span></span><span class="line"><span class="cl">  <span class="c"># customSCSS = [&#34;scss/custom.scss&#34;]</span>
+</span></span><span class="line"><span class="cl">  <span class="c"># customJS = [&#34;js/custom.js&#34;]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">taxonomies</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">category</span> <span class="p">=</span> <span class="s2">&#34;categories&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">series</span> <span class="p">=</span> <span class="s2">&#34;series&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">tag</span> <span class="p">=</span> <span class="s2">&#34;tags&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">author</span> <span class="p">=</span> <span class="s2">&#34;authors&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Social links</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">params</span><span class="p">.</span><span class="nx">social</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Github&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">icon</span> <span class="p">=</span> <span class="s2">&#34;fa-brands fa-github fa-2x&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;https://github.com/aksoyalpi/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">params</span><span class="p">.</span><span class="nx">social</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Instagram&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">icon</span> <span class="p">=</span> <span class="s2">&#34;fa-brands fa-instagram fa-2x&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;https://instagram.com/alpislifee/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">params</span><span class="p">.</span><span class="nx">social</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;LinkedIn&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">icon</span> <span class="p">=</span> <span class="s2">&#34;fa-brands fa-linkedin fa-2x&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;https://www.linkedin.com/in/alperen-aksoy-9364aa2a8/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">en</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">contentDir</span> <span class="p">=</span> <span class="s2">&#34;content/en&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">languageCode</span> <span class="p">=</span> <span class="s2">&#34;en-US&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">languageName</span> <span class="p">=</span> <span class="s2">&#34;English&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Menu links</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">en</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;About&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;about/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">en</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Projects&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;projects/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">en</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Contact&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;contact/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">de</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">contentDir</span> <span class="p">=</span> <span class="s2">&#34;content/de&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">languageCode</span> <span class="p">=</span> <span class="s2">&#34;de-DE&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">languageName</span> <span class="p">=</span> <span class="s2">&#34;Deutsch&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">de</span><span class="p">.</span><span class="nx">params</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">author</span> <span class="p">=</span> <span class="s2">&#34;Alperen Aksoy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">info</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;Softwareentwickler&#34;</span><span class="p">,</span> <span class="s2">&#34;Mobile App-Entwicklung&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;Webseite von Alperen Aksoy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">keyword</span> <span class="p">=</span> <span class="s2">&#34;software,blog,saas,persÃ¶nlich&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">de</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Blog&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span>  <span class="p">=</span> <span class="s2">&#34;posts/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">de</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Ãœber&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;about/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">de</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Projekte&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;projects/&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">languages</span><span class="p">.</span><span class="nx">de</span><span class="p">.</span><span class="nx">menu</span><span class="p">.</span><span class="nx">main</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;Kontakt&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">weight</span> <span class="p">=</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;contact/&#34;</span>
 </span></span></code></pre></div><h2 id="teste-hugo-lokal">
   Teste Hugo lokal
   <a class="heading-link" href="#teste-hugo-lokal">
@@ -459,8 +459,8 @@ Dazu sind folgende Schritte nötig:</p>
     <span class="sr-only">Link zu Überschrift</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Teste, ob Hugo mit deinen Änderungen läuft</span>
-</span></span><span style="display:flex;"><span>hugo server -t hugo-coder <span style="color:#8b949e;font-style:italic"># falls du ein anderes Theme gewählt hast, musst du hier den entsprechenden Namen eingeben </span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Teste, ob Hugo mit deinen Änderungen läuft</span>
+</span></span><span class="line"><span class="cl">hugo server -t hugo-coder <span class="c1"># falls du ein anderes Theme gewählt hast, musst du hier den entsprechenden Namen eingeben </span>
 </span></span></code></pre></div><h1 id="synchronisiere-obsidian-mit-hugo">
   Synchronisiere Obsidian mit Hugo
   <a class="heading-link" href="#synchronisiere-obsidian-mit-hugo">
@@ -476,7 +476,7 @@ Dazu sind folgende Schritte nötig:</p>
 <p>Kopiere deine Blog-Beiträge von Obsidian in Hugo</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>robocopy pfad/zum/obsidian/posts/ordner pfad/zum/hugo/posts/ordner
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">robocopy pfad/zum/obsidian/posts/ordner pfad/zum/hugo/posts/ordner
 </span></span></code></pre></div><ul>
 <li>falls du noch keinen posts Ordner in Hugo hast, erstelle einen Ordner im Unterordner <code>content</code> mit <code>mkdir posts</code></li>
 </ul>
@@ -513,42 +513,42 @@ tags:
 <li>Leider werden die Bilder noch nicht richtig mitkopiert, da Obisidan diese an einem anderen Ort speicher</li>
 <li>Deswegen gibt es folgendes Skript, welches die Bilder von Obsidian kopiert und in Hugo hochlädt</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">os</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">re</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">shutil</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Pfade (roh-Strings werden verwendet, um Windows-Backslashes korrekt zu behandeln)</span>
-</span></span><span style="display:flex;"><span>beitraege_ordner <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#34;C:\Users\a.aksoy\Documents\website\content\posts&#34;</span>
-</span></span><span style="display:flex;"><span>anhaenge_ordner <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#34;C:\Users\a.aksoy\Documents\my_second_brain\Attachments&#34;</span>
-</span></span><span style="display:flex;"><span>statische_bilder_ordner <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#34;C:\Users\a.aksoy\Documents\website\static\images&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Schritt 1: Verarbeite jede Markdown-Datei im Beiträge-Ordner</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> dateiname <span style="color:#ff7b72;font-weight:bold">in</span> os<span style="color:#ff7b72;font-weight:bold">.</span>listdir(beitraege_ordner):
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> dateiname<span style="color:#ff7b72;font-weight:bold">.</span>endswith(<span style="color:#a5d6ff">&#34;.md&#34;</span>):
-</span></span><span style="display:flex;"><span>        dateipfad <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(beitraege_ordner, dateiname)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">with</span> open(dateipfad, <span style="color:#a5d6ff">&#34;r&#34;</span>, encoding<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;utf-8&#34;</span>) <span style="color:#ff7b72">as</span> datei:
-</span></span><span style="display:flex;"><span>            inhalt <span style="color:#ff7b72;font-weight:bold">=</span> datei<span style="color:#ff7b72;font-weight:bold">.</span>read()
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># Schritt 2: Finde alle Bildverweise im Format ![Image Description](/images/Bildname.png)</span>
-</span></span><span style="display:flex;"><span>        bilder <span style="color:#ff7b72;font-weight:bold">=</span> re<span style="color:#ff7b72;font-weight:bold">.</span>findall(<span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#39;\[\[([^]]*\.png)\]\]&#39;</span>, inhalt)
-</span></span><span style="display:flex;"><span>        
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># Schritt 3: Ersetze Bildverweise und formatiere URLs korrekt</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span> bild <span style="color:#ff7b72;font-weight:bold">in</span> bilder:
-</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic"># Erstelle den Markdown-kompatiblen Bildlink mit %20 für Leerzeichen</span>
-</span></span><span style="display:flex;"><span>            markdown_bild <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;![Bildbeschreibung](/images/</span><span style="color:#a5d6ff">{</span>bild<span style="color:#ff7b72;font-weight:bold">.</span>replace(<span style="color:#a5d6ff">&#39; &#39;</span>, <span style="color:#a5d6ff">&#39;%20&#39;</span>)<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">)&#34;</span>
-</span></span><span style="display:flex;"><span>            inhalt <span style="color:#ff7b72;font-weight:bold">=</span> inhalt<span style="color:#ff7b72;font-weight:bold">.</span>replace(<span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;[[</span><span style="color:#a5d6ff">{</span>bild<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">]]&#34;</span>, markdown_bild)
-</span></span><span style="display:flex;"><span>            
-</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic"># Schritt 4: Kopiere das Bild in den Hugo static/images-Ordner (falls vorhanden)</span>
-</span></span><span style="display:flex;"><span>            quellpfad_bild <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(anhaenge_ordner, bild)
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>exists(quellpfad_bild):
-</span></span><span style="display:flex;"><span>                shutil<span style="color:#ff7b72;font-weight:bold">.</span>copy(quellpfad_bild, statische_bilder_ordner)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># Schritt 5: Schreibe den aktualisierten Inhalt zurück in die Markdown-Datei</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">with</span> open(dateipfad, <span style="color:#a5d6ff">&#34;w&#34;</span>, encoding<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;utf-8&#34;</span>) <span style="color:#ff7b72">as</span> datei:
-</span></span><span style="display:flex;"><span>            datei<span style="color:#ff7b72;font-weight:bold">.</span>write(inhalt)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#a5d6ff">&#34;Markdown-Dateien erfolgreich verarbeitet und Bilder kopiert.&#34;</span>)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">shutil</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Pfade (roh-Strings werden verwendet, um Windows-Backslashes korrekt zu behandeln)</span>
+</span></span><span class="line"><span class="cl"><span class="n">beitraege_ordner</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;C:\Users\a.aksoy\Documents\website\content\posts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">anhaenge_ordner</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;C:\Users\a.aksoy\Documents\my_second_brain\Attachments&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">statische_bilder_ordner</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;C:\Users\a.aksoy\Documents\website\static\images&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Schritt 1: Verarbeite jede Markdown-Datei im Beiträge-Ordner</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">dateiname</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">beitraege_ordner</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">dateiname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.md&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dateipfad</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">beitraege_ordner</span><span class="p">,</span> <span class="n">dateiname</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateipfad</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inhalt</span> <span class="o">=</span> <span class="n">datei</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Schritt 2: Finde alle Bildverweise im Format ![Image Description](/images/Bildname.png)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">bilder</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\[\[([^]]*\.png)\]\]&#39;</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Schritt 3: Ersetze Bildverweise und formatiere URLs korrekt</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">bild</span> <span class="ow">in</span> <span class="n">bilder</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># Erstelle den Markdown-kompatiblen Bildlink mit %20 für Leerzeichen</span>
+</span></span><span class="line"><span class="cl">            <span class="n">markdown_bild</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;![Bildbeschreibung](/images/</span><span class="si">{</span><span class="n">bild</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;%20&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">inhalt</span> <span class="o">=</span> <span class="n">inhalt</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[[</span><span class="si">{</span><span class="n">bild</span><span class="si">}</span><span class="s2">]]&#34;</span><span class="p">,</span> <span class="n">markdown_bild</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="c1"># Schritt 4: Kopiere das Bild in den Hugo static/images-Ordner (falls vorhanden)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">quellpfad_bild</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">anhaenge_ordner</span><span class="p">,</span> <span class="n">bild</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">quellpfad_bild</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">quellpfad_bild</span><span class="p">,</span> <span class="n">statische_bilder_ordner</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Schritt 5: Schreibe den aktualisierten Inhalt zurück in die Markdown-Datei</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">dateipfad</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">datei</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">datei</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Markdown-Dateien erfolgreich verarbeitet und Bilder kopiert.&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><h1 id="github-einstellen">
   GitHub Einstellen
   <a class="heading-link" href="#github-einstellen">
@@ -569,7 +569,7 @@ tags:
 <ul>
 <li>Falls du noch kein SSH-Schlüssel hast, erstelle einen</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t rsa -b <span style="color:#a5d6ff">4096</span> -C <span style="color:#a5d6ff">&#34;deine.email@beispiel.com&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;deine.email@beispiel.com&#34;</span>
 </span></span></code></pre></div><h2 id="push-in-github">
   Push in GitHub
   <a class="heading-link" href="#push-in-github">
@@ -580,11 +580,11 @@ tags:
 <ul>
 <li>Push den public Ordner in GitHub</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Verschiebe den public-Ordner in den Branch hostinger mit subtree split und erzwinge das Pushen</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
-</span></span><span style="display:flex;"><span>git subtree split --prefix public -b hostinger-deploy
-</span></span><span style="display:flex;"><span>git push origin hostinger-deploy:hostinger --force
-</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Step 8: Verschiebe den public-Ordner in den Branch hostinger mit subtree split und erzwinge das Pushen</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span class="line"><span class="cl">git subtree split --prefix public -b hostinger-deploy
+</span></span><span class="line"><span class="cl">git push origin hostinger-deploy:hostinger --force
+</span></span><span class="line"><span class="cl">git branch -D hostinger-deploy
 </span></span></code></pre></div><h1 id="hostinger-einrichten">
   Hostinger einrichten
   <a class="heading-link" href="#hostinger-einrichten">
@@ -636,10 +636,10 @@ tags:
 <li>um nur noch ein Skript auszuführen, wenn du Änderungen an der Webseite vornimmst, gibt es ein Skript, welche alle vorherigen Schritte einbezieht</li>
 <li>gehe in den Hugo Ordner und erstelle eine Skriptdatei</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Erstelle PowerShell Skript</span>
-</span></span><span style="display:flex;"><span>code updateblog.ps1
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>code updateblog.sh <span style="color:#8b949e;font-style:italic"># für linux/mac (Bash)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Erstelle PowerShell Skript</span>
+</span></span><span class="line"><span class="cl">code updateblog.ps1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">code updateblog.sh <span class="c1"># für linux/mac (Bash)</span>
 </span></span></code></pre></div><ul>
 <li>Dadurch muss du lediglich <code>./updateblog.ps1</code> oder <code>./updateblog.sh</code> aufrufen, wenn du Änderungen an der Webseite vornimmst
 <ul>
@@ -655,161 +655,161 @@ tags:
     <span class="sr-only">Link zu Überschrift</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># PowerShell Script for Windows</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set variables for Obsidian to Hugo copy</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$sourcePath</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;C:\Users\path\to\obsidian\posts&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$destinationPath</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;C:\Users\path\to\hugo\posts&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set Github repo </span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$myrepo</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;reponame&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set error handling</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$ErrorActionPreference</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Stop&#34;</span>
-</span></span><span style="display:flex;"><span>Set-StrictMode -Version Latest
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Change to the script&#39;s directory</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$ScriptDir</span> <span style="color:#ff7b72;font-weight:bold">=</span> Split-Path -Parent <span style="color:#79c0ff">$MyInvocation</span>.MyCommand.Definition
-</span></span><span style="display:flex;"><span>Set-Location <span style="color:#79c0ff">$ScriptDir</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for required commands</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$requiredCommands</span> <span style="color:#ff7b72;font-weight:bold">=</span> @<span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#a5d6ff">&#39;git&#39;</span>, <span style="color:#a5d6ff">&#39;hugo&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for Python command (python or python3)</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#a5d6ff">&#39;python&#39;</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$pythonCommand</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#39;python&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> elseif <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#a5d6ff">&#39;python3&#39;</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$pythonCommand</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#39;python3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Python is not installed or not in PATH.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>foreach <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$cmd</span> in <span style="color:#79c0ff">$requiredCommands</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#79c0ff">$cmd</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        Write-Error <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$cmd</span><span style="color:#a5d6ff"> is not installed or not in PATH.&#34;</span>
-</span></span><span style="display:flex;"><span>        exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 1: Check if Git is initialized, and initialize if necessary</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#a5d6ff">&#34;.git&#34;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Initializing Git repository...&#34;</span>
-</span></span><span style="display:flex;"><span>    git init
-</span></span><span style="display:flex;"><span>    git remote add origin <span style="color:#79c0ff">$myrepo</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Git repository already initialized.&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$remotes</span> <span style="color:#ff7b72;font-weight:bold">=</span> git remote
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$remotes</span> -contains <span style="color:#a5d6ff">&#39;origin&#39;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        Write-Host <span style="color:#a5d6ff">&#34;Adding remote origin...&#34;</span>
-</span></span><span style="display:flex;"><span>        git remote add origin <span style="color:#79c0ff">$myrepo</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Syncing posts from Obsidian...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#79c0ff">$sourcePath</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Source path does not exist: </span><span style="color:#79c0ff">$sourcePath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#79c0ff">$destinationPath</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Destination path does not exist: </span><span style="color:#79c0ff">$destinationPath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Use Robocopy to mirror the directories</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$robocopyOptions</span> <span style="color:#ff7b72;font-weight:bold">=</span> @<span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#a5d6ff">&#39;/MIR&#39;</span>, <span style="color:#a5d6ff">&#39;/Z&#39;</span>, <span style="color:#a5d6ff">&#39;/W:5&#39;</span>, <span style="color:#a5d6ff">&#39;/R:3&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$robocopyResult</span> <span style="color:#ff7b72;font-weight:bold">=</span> robocopy <span style="color:#79c0ff">$sourcePath</span> <span style="color:#79c0ff">$destinationPath</span> @robocopyOptions
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$LASTEXITCODE</span> -ge 8<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Robocopy failed with exit code </span><span style="color:#79c0ff">$LASTEXITCODE</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 3: Process Markdown files with Python script to handle image links</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Processing image links in Markdown files...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#a5d6ff">&#34;images.py&#34;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Python script images.py not found.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Execute the Python script</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    &amp; <span style="color:#79c0ff">$pythonCommand</span> images.py
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to process image links.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 4: Build the Hugo site</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Building the Hugo site...&#34;</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    hugo
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Hugo build failed.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 5: Add changes to Git</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Staging changes for Git...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$hasChanges</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">(</span>git status --porcelain<span style="color:#ff7b72;font-weight:bold">)</span> -ne <span style="color:#a5d6ff">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#79c0ff">$hasChanges</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;No changes to stage.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git add .
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 6: Commit changes with a dynamic message</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$commitMessage</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;New Blog Post on </span><span style="color:#ff7b72">$(</span>Get-Date -Format <span style="color:#a5d6ff">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span style="color:#ff7b72">)</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$hasStagedChanges</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">(</span>git diff --cached --name-only<span style="color:#ff7b72;font-weight:bold">)</span> -ne <span style="color:#a5d6ff">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#79c0ff">$hasStagedChanges</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;No changes to commit.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Committing changes...&#34;</span>
-</span></span><span style="display:flex;"><span>    git commit -m <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$commitMessage</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 7: Push all changes to the main branch</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Deploying to GitHub Master...&#34;</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git push origin master
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to push to Master branch.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check if the temporary branch exists and delete it</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$branchExists</span> <span style="color:#ff7b72;font-weight:bold">=</span> git branch --list <span style="color:#a5d6ff">&#34;hostinger-deploy&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$branchExists</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Perform subtree split</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git subtree split --prefix public -b hostinger-deploy
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Subtree split failed.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Push to hostinger branch with force</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git push origin hostinger-deploy:hostinger --force
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to push to hostinger branch.&#34;</span>
-</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Delete the temporary branch</span>
-</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># PowerShell Script for Windows</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set variables for Obsidian to Hugo copy</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$sourcePath</span> <span class="o">=</span> <span class="s2">&#34;C:\Users\path\to\obsidian\posts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$destinationPath</span> <span class="o">=</span> <span class="s2">&#34;C:\Users\path\to\hugo\posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set Github repo </span>
+</span></span><span class="line"><span class="cl"><span class="nv">$myrepo</span> <span class="o">=</span> <span class="s2">&#34;reponame&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set error handling</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ErrorActionPreference</span> <span class="o">=</span> <span class="s2">&#34;Stop&#34;</span>
+</span></span><span class="line"><span class="cl">Set-StrictMode -Version Latest
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Change to the script&#39;s directory</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ScriptDir</span> <span class="o">=</span> Split-Path -Parent <span class="nv">$MyInvocation</span>.MyCommand.Definition
+</span></span><span class="line"><span class="cl">Set-Location <span class="nv">$ScriptDir</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check for required commands</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$requiredCommands</span> <span class="o">=</span> @<span class="o">(</span><span class="s1">&#39;git&#39;</span>, <span class="s1">&#39;hugo&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check for Python command (python or python3)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>Get-Command <span class="s1">&#39;python&#39;</span> -ErrorAction SilentlyContinue<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$pythonCommand</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> elseif <span class="o">(</span>Get-Command <span class="s1">&#39;python3&#39;</span> -ErrorAction SilentlyContinue<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$pythonCommand</span> <span class="o">=</span> <span class="s1">&#39;python3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Python is not installed or not in PATH.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">foreach <span class="o">(</span><span class="nv">$cmd</span> in <span class="nv">$requiredCommands</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Get-Command <span class="nv">$cmd</span> -ErrorAction SilentlyContinue<span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        Write-Error <span class="s2">&#34;</span><span class="nv">$cmd</span><span class="s2"> is not installed or not in PATH.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 1: Check if Git is initialized, and initialize if necessary</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="s2">&#34;.git&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;Initializing Git repository...&#34;</span>
+</span></span><span class="line"><span class="cl">    git init
+</span></span><span class="line"><span class="cl">    git remote add origin <span class="nv">$myrepo</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;Git repository already initialized.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$remotes</span> <span class="o">=</span> git remote
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span><span class="nv">$remotes</span> -contains <span class="s1">&#39;origin&#39;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        Write-Host <span class="s2">&#34;Adding remote origin...&#34;</span>
+</span></span><span class="line"><span class="cl">        git remote add origin <span class="nv">$myrepo</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Syncing posts from Obsidian...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="nv">$sourcePath</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Source path does not exist: </span><span class="nv">$sourcePath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="nv">$destinationPath</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Destination path does not exist: </span><span class="nv">$destinationPath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Use Robocopy to mirror the directories</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$robocopyOptions</span> <span class="o">=</span> @<span class="o">(</span><span class="s1">&#39;/MIR&#39;</span>, <span class="s1">&#39;/Z&#39;</span>, <span class="s1">&#39;/W:5&#39;</span>, <span class="s1">&#39;/R:3&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$robocopyResult</span> <span class="o">=</span> robocopy <span class="nv">$sourcePath</span> <span class="nv">$destinationPath</span> @robocopyOptions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="nv">$LASTEXITCODE</span> -ge 8<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Robocopy failed with exit code </span><span class="nv">$LASTEXITCODE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 3: Process Markdown files with Python script to handle image links</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Processing image links in Markdown files...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="s2">&#34;images.py&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Python script images.py not found.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Execute the Python script</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&amp;</span> <span class="nv">$pythonCommand</span> images.py
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Failed to process image links.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 4: Build the Hugo site</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Building the Hugo site...&#34;</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    hugo
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Hugo build failed.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 5: Add changes to Git</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Staging changes for Git...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$hasChanges</span> <span class="o">=</span> <span class="o">(</span>git status --porcelain<span class="o">)</span> -ne <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="nv">$hasChanges</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;No changes to stage.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git add .
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 6: Commit changes with a dynamic message</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$commitMessage</span> <span class="o">=</span> <span class="s2">&#34;New Blog Post on </span><span class="k">$(</span>Get-Date -Format <span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$hasStagedChanges</span> <span class="o">=</span> <span class="o">(</span>git diff --cached --name-only<span class="o">)</span> -ne <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="nv">$hasStagedChanges</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;No changes to commit.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;Committing changes...&#34;</span>
+</span></span><span class="line"><span class="cl">    git commit -m <span class="s2">&#34;</span><span class="nv">$commitMessage</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 7: Push all changes to the main branch</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Deploying to GitHub Master...&#34;</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git push origin master
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Failed to push to Master branch.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check if the temporary branch exists and delete it</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$branchExists</span> <span class="o">=</span> git branch --list <span class="s2">&#34;hostinger-deploy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="nv">$branchExists</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Perform subtree split</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git subtree split --prefix public -b hostinger-deploy
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Subtree split failed.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Push to hostinger branch with force</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git push origin hostinger-deploy:hostinger --force
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Failed to push to hostinger branch.&#34;</span>
+</span></span><span class="line"><span class="cl">    git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Delete the temporary branch</span>
+</span></span><span class="line"><span class="cl">git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
 </span></span></code></pre></div><h2 id="linuxmax-bash">
   Linux/Max (Bash)
   <a class="heading-link" href="#linuxmax-bash">
@@ -817,119 +817,119 @@ tags:
     <span class="sr-only">Link zu Überschrift</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic">#!/bin/bash
-</span></span></span><span style="display:flex;"><span><span style="color:#8b949e;font-weight:bold;font-style:italic"></span>set -euo pipefail
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Change to the script&#39;s directory</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">SCRIPT_DIR</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;</span><span style="color:#ff7b72">$(</span>cd <span style="color:#a5d6ff">&#34;</span><span style="color:#ff7b72">$(</span>dirname <span style="color:#a5d6ff">&#34;</span><span style="color:#a5d6ff">${</span><span style="color:#79c0ff">BASH_SOURCE</span>[0]<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">&#34;</span><span style="color:#ff7b72">)</span><span style="color:#a5d6ff">&#34;</span> <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> pwd<span style="color:#ff7b72">)</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>cd <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$SCRIPT_DIR</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set variables for Obsidian to Hugo copy</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">sourcePath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;/Users/path/to/obsidian/posts&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">destinationPath</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;/Users/path/to/hugo/posts&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set GitHub Repo</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">myrepo</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;reponame&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for required commands</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> cmd in git rsync python3 hugo; <span style="color:#ff7b72">do</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> ! command -v <span style="color:#79c0ff">$cmd</span> &amp;&gt; /dev/null; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>        echo <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$cmd</span><span style="color:#a5d6ff"> is not installed or not in PATH.&#34;</span>
-</span></span><span style="display:flex;"><span>        exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">done</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 1: Check if Git is initialized, and initialize if necessary</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[</span> ! -d <span style="color:#a5d6ff">&#34;.git&#34;</span> <span style="color:#ff7b72;font-weight:bold">]</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Initializing Git repository...&#34;</span>
-</span></span><span style="display:flex;"><span>    git init
-</span></span><span style="display:flex;"><span>    git remote add origin <span style="color:#79c0ff">$myrepo</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Git repository already initialized.&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> ! git remote | grep -q <span style="color:#a5d6ff">&#39;origin&#39;</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>        echo <span style="color:#a5d6ff">&#34;Adding remote origin...&#34;</span>
-</span></span><span style="display:flex;"><span>        git remote add origin <span style="color:#79c0ff">$myrepo</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 2: Sync posts from Obsidian to Hugo content folder using rsync</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Syncing posts from Obsidian...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[</span> ! -d <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$sourcePath</span><span style="color:#a5d6ff">&#34;</span> <span style="color:#ff7b72;font-weight:bold">]</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Source path does not exist: </span><span style="color:#79c0ff">$sourcePath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[</span> ! -d <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$destinationPath</span><span style="color:#a5d6ff">&#34;</span> <span style="color:#ff7b72;font-weight:bold">]</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Destination path does not exist: </span><span style="color:#79c0ff">$destinationPath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>rsync -av --delete <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$sourcePath</span><span style="color:#a5d6ff">&#34;</span> <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$destinationPath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 3: Process Markdown files with Python script to handle image links</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Processing image links in Markdown files...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">[</span> ! -f <span style="color:#a5d6ff">&#34;images.py&#34;</span> <span style="color:#ff7b72;font-weight:bold">]</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Python script images.py not found.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> ! python3 images.py; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Failed to process image links.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 4: Build the Hugo site</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Building the Hugo site...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> ! hugo; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Hugo build failed.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 5: Add changes to Git</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Staging changes for Git...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> git diff --quiet <span style="color:#ff7b72;font-weight:bold">&amp;&amp;</span> git diff --cached --quiet; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;No changes to stage.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">else</span>
-</span></span><span style="display:flex;"><span>    git add .
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 6: Commit changes with a dynamic message</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">commit_message</span><span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;New Blog Post on </span><span style="color:#ff7b72">$(</span>date +<span style="color:#a5d6ff">&#39;%Y-%m-%d %H:%M:%S&#39;</span><span style="color:#ff7b72">)</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> git diff --cached --quiet; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;No changes to commit.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">else</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Committing changes...&#34;</span>
-</span></span><span style="display:flex;"><span>    git commit -m <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$commit_message</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 7: Push all changes to the main branch</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Deploying to GitHub Main...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> ! git push origin main; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Failed to push to main branch.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> git branch --list | grep -q <span style="color:#a5d6ff">&#39;hostinger-deploy&#39;</span>; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> ! git subtree split --prefix public -b hostinger-deploy; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Subtree split failed.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> ! git push origin hostinger-deploy:hostinger --force; <span style="color:#ff7b72">then</span>
-</span></span><span style="display:flex;"><span>    echo <span style="color:#a5d6ff">&#34;Failed to push to hostinger branch.&#34;</span>
-</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">fi</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="nb">set</span> -euo pipefail
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Change to the script&#39;s directory</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SCRIPT_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">&#34;</span><span class="k">$(</span>dirname <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&#34;</span><span class="k">)</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> <span class="s2">&#34;</span><span class="nv">$SCRIPT_DIR</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set variables for Obsidian to Hugo copy</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sourcePath</span><span class="o">=</span><span class="s2">&#34;/Users/path/to/obsidian/posts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">destinationPath</span><span class="o">=</span><span class="s2">&#34;/Users/path/to/hugo/posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set GitHub Repo</span>
+</span></span><span class="line"><span class="cl"><span class="nv">myrepo</span><span class="o">=</span><span class="s2">&#34;reponame&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check for required commands</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> cmd in git rsync python3 hugo<span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> ! <span class="nb">command</span> -v <span class="nv">$cmd</span> <span class="p">&amp;</span>&gt; /dev/null<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;</span><span class="nv">$cmd</span><span class="s2"> is not installed or not in PATH.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 1: Check if Git is initialized, and initialize if necessary</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;.git&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Initializing Git repository...&#34;</span>
+</span></span><span class="line"><span class="cl">    git init
+</span></span><span class="line"><span class="cl">    git remote add origin <span class="nv">$myrepo</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Git repository already initialized.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> ! git remote <span class="p">|</span> grep -q <span class="s1">&#39;origin&#39;</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">echo</span> <span class="s2">&#34;Adding remote origin...&#34;</span>
+</span></span><span class="line"><span class="cl">        git remote add origin <span class="nv">$myrepo</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Sync posts from Obsidian to Hugo content folder using rsync</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Syncing posts from Obsidian...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;</span><span class="nv">$sourcePath</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Source path does not exist: </span><span class="nv">$sourcePath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="s2">&#34;</span><span class="nv">$destinationPath</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Destination path does not exist: </span><span class="nv">$destinationPath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rsync -av --delete <span class="s2">&#34;</span><span class="nv">$sourcePath</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$destinationPath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 3: Process Markdown files with Python script to handle image links</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Processing image links in Markdown files...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&#34;images.py&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Python script images.py not found.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! python3 images.py<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Failed to process image links.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 4: Build the Hugo site</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Building the Hugo site...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! hugo<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Hugo build failed.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 5: Add changes to Git</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Staging changes for Git...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> git diff --quiet <span class="o">&amp;&amp;</span> git diff --cached --quiet<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;No changes to stage.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    git add .
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 6: Commit changes with a dynamic message</span>
+</span></span><span class="line"><span class="cl"><span class="nv">commit_message</span><span class="o">=</span><span class="s2">&#34;New Blog Post on </span><span class="k">$(</span>date +<span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> git diff --cached --quiet<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;No changes to commit.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Committing changes...&#34;</span>
+</span></span><span class="line"><span class="cl">    git commit -m <span class="s2">&#34;</span><span class="nv">$commit_message</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 7: Push all changes to the main branch</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Deploying to GitHub Main...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! git push origin main<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Failed to push to main branch.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> git branch --list <span class="p">|</span> grep -q <span class="s1">&#39;hostinger-deploy&#39;</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! git subtree split --prefix public -b hostinger-deploy<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Subtree split failed.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> ! git push origin hostinger-deploy:hostinger --force<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Failed to push to hostinger branch.&#34;</span>
+</span></span><span class="line"><span class="cl">    git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
 </span></span></code></pre></div><hr>
 <p>Die Idee zu diesem Projekt habe ich von folgendem Video</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -961,6 +961,8 @@ tags:
     <footer class="footer">
   <section class="container">
     ©
+    
+      2022 -
     
     2025
      Alperen Aksoy 
