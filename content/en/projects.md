@@ -26,11 +26,7 @@ slug = "projects"
 
 ## 📱 Screenshots
 
-![image](https://github.com/user-attachments/assets/f0fc48b4-c82b-4d02-9e64-ae48130f72d8)
-![image](https://github.com/user-attachments/assets/1040f60a-99db-4e08-8bbb-fb31c995711a)
-![image](https://github.com/user-attachments/assets/68530915-9c92-4aec-8e34-59a3af7037a4)
-![image](https://github.com/user-attachments/assets/ba152ba0-51cd-4625-ae57-1d5f46b13965)
-![image](https://github.com/user-attachments/assets/7849a324-85ba-491d-87e6-dce26e1718a9)
+![quranify_monochrome](https://github.com/user-attachments/assets/9d7451c8-7090-4595-aaed-4359a2f08b53)
 
 ## 🚀 Coming Soon
 Available for:
@@ -70,10 +66,8 @@ A clean and user-friendly app for Muslim prayer times – simple, powerful, and 
 
 ## 📱 Screenshots
 
-![image](https://github.com/user-attachments/assets/96b6e198-7268-41b6-b444-8b208553e58a)
-![image](https://github.com/user-attachments/assets/abf3a264-5053-41e8-8365-0d7789cf7a30)
-![image](https://github.com/user-attachments/assets/546018a9-7422-4acd-a2ae-94ba5f06b9af)
-![image](https://github.com/user-attachments/assets/13490950-bd09-4011-a180-fd37c49fd7ea)
+
+![marketing_colorful_prayers](https://github.com/user-attachments/assets/22a54d08-8aba-494a-bc9d-0cb5faaef810)
 
 
 ## 🔧 Installation
