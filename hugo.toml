@@ -34,7 +34,6 @@ unsafe = true
   keywords = "blog,developer,personal,software,saas"
   avatarurl = "images/profile.png"
   since = 2022
-  commit = "https://google.com"
   favicon = "/static/images/favicon.svg"
   #gravatar = "john.doe@example.com"
 
