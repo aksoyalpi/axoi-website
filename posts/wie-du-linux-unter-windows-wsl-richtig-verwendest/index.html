@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <title>
+  Wie du Linux unter Windows (WSL) RICHTIG verwendest! · Alperen Aksoy
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Alperen Aksoy">
+<meta name="description" content="
+  Windows Subsystem Linux
+  
+    
+    Link zu Überschrift
+  
+
+Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, &hellip;) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.
+!
+Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+
+Hardware 64-bit
+min. 4GB Ram
+Virtualization muss aktiviert sein
+Windows 11
+
+&ndash;&gt; All dies sollte bei den meisten Leuten bereits passen
+Aber warum sollte man Linux unter Windows benutzen&hellip;?">
+<meta name="keywords" content="blog,developer,personal,software,saas">
+
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Wie du Linux unter Windows (WSL) RICHTIG verwendest!">
+  <meta name="twitter:description" content="Windows Subsystem LinuxLink zu ÜberschriftWir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, …) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet. !
+Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+Hardware 64-bit min. 4GB Ram Virtualization muss aktiviert sein Windows 11 –&gt; All dies sollte bei den meisten Leuten bereits passen
+Aber warum sollte man Linux unter Windows benutzen…?">
+
+<meta property="og:url" content="https://alperenaksoy.de/posts/wie-du-linux-unter-windows-wsl-richtig-verwendest/">
+  <meta property="og:site_name" content="Alperen Aksoy">
+  <meta property="og:title" content="Wie du Linux unter Windows (WSL) RICHTIG verwendest!">
+  <meta property="og:description" content="Windows Subsystem LinuxLink zu ÜberschriftWir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, …) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet. !
+Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+Hardware 64-bit min. 4GB Ram Virtualization muss aktiviert sein Windows 11 –&gt; All dies sollte bei den meisten Leuten bereits passen
+Aber warum sollte man Linux unter Windows benutzen…?">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-27T00:00:00+00:00">
+    <meta property="article:tag" content="WSL">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Windows">
+    <meta property="article:tag" content="Ubuntu">
+    <meta property="article:tag" content="Kali">
+
+
+
+
+<link rel="canonical" href="https://alperenaksoy.de/posts/wie-du-linux-unter-windows-wsl-richtig-verwendest/">
+
+
+<link rel="preload" href="/fonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.7763f8bc6341ecf82378e867c285e1549abb063a899be313ccd25dbfcd24fa7d.css" integrity="sha256-d2P4vGNB7PgjeOhnwoXhVJq7BjqJm&#43;MTzNJdv80k&#43;n0=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.a00e6364bacbc8266ad1cc81230774a1397198f8cfb7bcba29b7d6fcb54ce57f.css" integrity="sha256-oA5jZLrLyCZq0cyBIwd0oTlxmPjPt7y6KbfW/LVM5X8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/svg+xml" href="/img/favicon.svg" sizes="any">
+<link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa-solid fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    
+    <a class="navigation-title" href="https://alperenaksoy.de/">
+      Alperen Aksoy
+    </a>
+    
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa-solid fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/about/">Über</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/projects/">Projekte</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link " href="/contact/">Kontakt</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="/en/">English</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://alperenaksoy.de/posts/wie-du-linux-unter-windows-wsl-richtig-verwendest/">
+              Wie du Linux unter Windows (WSL) RICHTIG verwendest!
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              <time datetime="2025-04-27T00:00:00Z">
+                April 27, 2025
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              3 Minuten Lesezeit
+            </span>
+          </div>
+          
+          
+          <div class="tags">
+  <i class="fa-solid fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/wsl/">WSL</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/linux/">Linux</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/windows/">Windows</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/ubuntu/">Ubuntu</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/kali/">Kali</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <h1 id="windows-subsystem-linux">
+  Windows Subsystem Linux
+  <a class="heading-link" href="#windows-subsystem-linux">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h1>
+<p>Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, &hellip;) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.
+!<img src="/images/Pasted%20image%2020250427070055.png" alt="Image Description"></p>
+<p>Um WSL2 auf Windows zu verwenden, ist folgendes möglich</p>
+<ul>
+<li>Hardware 64-bit</li>
+<li>min. 4GB Ram</li>
+<li>Virtualization muss aktiviert sein</li>
+<li>Windows 11</li>
+</ul>
+<p>&ndash;&gt; All dies sollte bei den meisten Leuten bereits passen</p>
+<p>Aber warum sollte man Linux unter Windows benutzen&hellip;?</p>
+<h2 id="warum-wsl">
+  Warum WSL?
+  <a class="heading-link" href="#warum-wsl">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<p>Deine Welt der Möglichkeiten expandiert wie das Universum. Fertig.</p>
+<p>Nein Spaß, hier sind einige Gründe, weshalb du WSL verwenden solltest.</p>
+<ol>
+<li>Warum nicht. WSL ist in Windows direkt eingebaut und <em>kostet nichts extra</em></li>
+<li>Du hast eine Linux-Umgebung direkt unter Windows und kannst echte Linux-Tools (<code>bash</code>, <code>ssh</code>,  <code>git</code>, &hellip;) nativ unter Windows benutzen</li>
+<li>Sehr leichtgewichtig
+<ul>
+<li>Im Vergleich zu einer kompletten VM, verbraucht WSL deutlich weniger RAM und CPU-Leistung</li>
+</ul>
+</li>
+<li>Gemeinsamer Zugriff auf Dateien
+<ul>
+<li>Dein Windos-Dateisystem (<code>C:\</code>, <code>D:\</code> etc.) ist direkt unter WSL erreichbar und umgekehrt</li>
+</ul>
+</li>
+</ol>
+<p>Außderdem ist es ein sehr spannendes Thema, falls man mit <code>Docker</code> arbeitet, aber dazu nächstes mal mehr.
+Ich könnte noch weiter machen, doch dieser Beitrag, soll sich ja um das wie und nicht um das was und warum drehen.
+Also springen wir direkt in die Praxis😁.</p>
+<h2 id="installation">
+  Installation
+  <a class="heading-link" href="#installation">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<ul>
+<li>Installiere WSL auf Windows</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --install <span style="color:#8b949e;font-style:italic"># Admin Rechte benötigt</span>
+</span></span></code></pre></div><ul>
+<li>Installiere eine Ubuntu Distribution</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl -d ubuntu
+</span></span></code></pre></div><ul>
+<li>Man kann auch andere Distributionen installieren
+<ul>
+<li>Folgender Befehl gibt alle verfügbaren Distributionen aus</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --list --online <span style="color:#8b949e;font-style:italic"># zeigt alle verfügbaren Distros</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wsl -d kali-linux <span style="color:#8b949e;font-style:italic"># installiere beispielsweise kali Distribution</span>
+</span></span></code></pre></div><ul>
+<li>Es ist ebenso möglich WSL Distributionen über den Microsoft Store herunterzuladen
+<ul>
+<li>Ja, das geht wirklich</li>
+</ul>
+</li>
+</ul>
+<p>!<img src="/images/Pasted%20image%2020250427063914.png" alt="Image Description"></p>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl -d ubuntu <span style="color:#8b949e;font-style:italic"># name von der distro zum öffnen der distro</span>
+</span></span></code></pre></div><hr>
+<h2 id="windows-befehle-in-wsl">
+  Windows Befehle in WSL
+  <a class="heading-link" href="#windows-befehle-in-wsl">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<ul>
+<li>Ja, im WSL Terminal kann man auch Windows Befehle verwenden, wenn man <code>.exe</code> hinter den Programmnamen anhängt</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># inside wsl (ubuntu)</span>
+</span></span><span style="display:flex;"><span>ipconfig.exe 
+</span></span><span style="display:flex;"><span>ping.exe
+</span></span><span style="display:flex;"><span>notepad.exe
+</span></span><span style="display:flex;"><span>explorer.exe
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>.
+</span></span></code></pre></div><ul>
+<li>auch kann man Linux Befehle im Windows Terminal wie folgt verwenden
+<ul>
+<li>dazu muss man lediglich <code>wsl</code> vor den Befehl schreiben</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ipconfig | wsl grep 10. <span style="color:#8b949e;font-style:italic"># zum filtern</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>wsl cat
+</span></span></code></pre></div><p>Ist das nicht geil
+Die Betriebssysteme arbeiten quasi Hand in Hand
+!<img src="/images/Pasted%20image%2020250427064653.png" alt="Image Description"></p>
+<hr>
+<h1 id="exkursion-spiderfoot">
+  Exkursion: spiderfoot
+  <a class="heading-link" href="#exkursion-spiderfoot">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h1>
+<p>OSINT tool (open source intelligence tool) for hacker</p>
+<ul>
+<li><code>spiderfoot</code> ist eine OSINT (Open Source for Intelligence Tool)</li>
+<li>Man kann das Programm wie folgt in <code>kali-linux</code> starten</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>spiderfoot -l 127.0.0.1:5001 <span style="color:#8b949e;font-style:italic"># &lt;ip&gt;:&lt;port&gt;</span>
+</span></span></code></pre></div><ul>
+<li>Dann gibt man den Socket (in unserem Fall 127.0.0.1:5001) im Browser ein und kann das Tool verwenden</li>
+</ul>
+<hr>
+<h2 id="installierte-distros-ausgeben">
+  Installierte Distros ausgeben
+  <a class="heading-link" href="#installierte-distros-ausgeben">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --list
+</span></span><span style="display:flex;"><span>wsl --list --verbose <span style="color:#8b949e;font-style:italic"># für mehr Infos</span>
+</span></span></code></pre></div><ul>
+<li>Default Distor wird mit * markiert</li>
+</ul>
+<h2 id="default-ändern">
+  Default ändern
+  <a class="heading-link" href="#default-%c3%a4ndern">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<ul>
+<li>Hier wird der Default beispielsweise auf <code>kali-linux</code> gesetzt</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --set-default kali-linux 
+</span></span></code></pre></div><h2 id="wsl-ausschalten">
+  WSL ,,ausschalten&quot;
+  <a class="heading-link" href="#wsl-ausschalten">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --shutdown <span style="color:#8b949e;font-style:italic"># stoppt alle distros</span>
+</span></span><span style="display:flex;"><span>wsl --terminate kali-linux <span style="color:#8b949e;font-style:italic"># um nur kali-linux zu stoppen</span>
+</span></span></code></pre></div><ul>
+<li>Weitere Informationen erhalten</li>
+</ul>
+<pre tabindex="0"><code>wsl status
+</code></pre><h2 id="löschen-von-distros">
+  Löschen von Distros
+  <a class="heading-link" href="#l%c3%b6schen-von-distros">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --unregister kali-linux <span style="color:#8b949e;font-style:italic"># zum löschen von kali-linux</span>
+</span></span></code></pre></div><h2 id="auf-windows-dateien-zugreifen">
+  Auf Windows Dateien zugreifen
+  <a class="heading-link" href="#auf-windows-dateien-zugreifen">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<ul>
+<li>Man kann in WSL über <code>/mnt/c</code> auf den Windows Harddrive zugreifen</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /mnt/c <span style="color:#8b949e;font-style:italic"># windows harddrive</span>
+</span></span></code></pre></div><h2 id="auf-linux-dateien-zugreifen">
+  Auf Linux Dateien zugreifen
+  <a class="heading-link" href="#auf-linux-dateien-zugreifen">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<ul>
+<li>Man kann in einem Linux Ordner (bsp. <code>/home/user</code>) <code>explorer.exe .</code> aufrufen
+<ul>
+<li>Öffnet Windows Datei Explorer und zeigt auf den Linux Ordner</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>explorer.exe . <span style="color:#8b949e;font-style:italic"># in wsl home verzeichnes eingeben</span>
+</span></span></code></pre></div><hr>
+<h1 id="kali-win-kex">
+  kali-win-kex
+  <a class="heading-link" href="#kali-win-kex">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h1>
+<ul>
+<li>Ein weiteres cooles Tool für <code>kali</code> ist <code>kali-win-kex</code>
+<ul>
+<li>Damit kann man sich eine Kali-Umgebung erzeugen</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install kali-win-kex -y <span style="color:#8b949e;font-style:italic"># installiere kali-win-kex</span>
+</span></span><span style="display:flex;"><span>kex <span style="color:#8b949e;font-style:italic"># erzeuge Umgebung</span>
+</span></span></code></pre></div><ul>
+<li>F8 für Einstellungen</li>
+<li><code>kex --win --stop</code> zum stoppen oder einfach ausloggen
+!<img src="/images/Pasted%20image%2020250427065644.png" alt="Image Description"></li>
+</ul>
+<hr>
+<h2 id="wsl-plugin-für-vscode">
+  WSL Plugin für VSCode
+  <a class="heading-link" href="#wsl-plugin-f%c3%bcr-vscode">
+    <i class="fa-solid fa-link" aria-hidden="true" title="Link zu Überschrift"></i>
+    <span class="sr-only">Link zu Überschrift</span>
+  </a>
+</h2>
+<ul>
+<li>Ein Must-Have ist ebenso das WSL Plugin für VSCode
+<ul>
+<li>erlaubt das arbeiten mit Dateien in WSL</li>
+<li>WSL Terminal in VSCode</li>
+<li>und weitere Vorteile</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2025
+     Alperen Aksoy 
+    ·
+    
+    Gestaltet mit <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
