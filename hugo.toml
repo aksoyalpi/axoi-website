@@ -16,8 +16,16 @@ pagerSize = 6
 #[services.disqus]
 #shortname = "axoi-diqus"
 
+# [markup.highlight]
+# style = "github-dark"
+
+[markup]
 [markup.highlight]
-style = "github-dark"
+noClasses = false
+
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
 
 [params]
   author = "Alperen Aksoy"
@@ -25,6 +33,9 @@ style = "github-dark"
   description = "Axoi Software Solutions Website"
   keywords = "blog,developer,personal,software,saas"
   avatarurl = "images/profile.png"
+  since = 2022
+  commit = "https://google.com"
+  favicon = "/static/images/favicon.svg"
   #gravatar = "john.doe@example.com"
 
   faviconSVG = "/img/favicon.svg"

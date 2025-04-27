@@ -13,7 +13,7 @@ tags:
 Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, ...) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.
 !![Image Description](/images/Pasted%20image%2020250427070055.png)
 
-Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+Um WSL2 auf Windows zu verwenden, ist folgendes nötig
 - Hardware 64-bit
 - min. 4GB Ram
 - Virtualization muss aktiviert sein

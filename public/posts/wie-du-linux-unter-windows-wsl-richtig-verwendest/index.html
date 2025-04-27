@@ -22,7 +22,7 @@
 
 Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, &hellip;) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.
 !
-Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+Um WSL2 auf Windows zu verwenden, ist folgendes nötig
 
 Hardware 64-bit
 min. 4GB Ram
@@ -38,7 +38,7 @@ Aber warum sollte man Linux unter Windows benutzen&hellip;?">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Wie du Linux unter Windows (WSL) RICHTIG verwendest!">
   <meta name="twitter:description" content="Windows Subsystem LinuxLink zu ÜberschriftWir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, …) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet. !
-Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+Um WSL2 auf Windows zu verwenden, ist folgendes nötig
 Hardware 64-bit min. 4GB Ram Virtualization muss aktiviert sein Windows 11 –&gt; All dies sollte bei den meisten Leuten bereits passen
 Aber warum sollte man Linux unter Windows benutzen…?">
 
@@ -46,7 +46,7 @@ Aber warum sollte man Linux unter Windows benutzen…?">
   <meta property="og:site_name" content="Alperen Aksoy">
   <meta property="og:title" content="Wie du Linux unter Windows (WSL) RICHTIG verwendest!">
   <meta property="og:description" content="Windows Subsystem LinuxLink zu ÜberschriftWir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, …) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet. !
-Um WSL2 auf Windows zu verwenden, ist folgendes möglich
+Um WSL2 auf Windows zu verwenden, ist folgendes nötig
 Hardware 64-bit min. 4GB Ram Virtualization muss aktiviert sein Windows 11 –&gt; All dies sollte bei den meisten Leuten bereits passen
 Aber warum sollte man Linux unter Windows benutzen…?">
   <meta property="og:locale" content="de_DE">
@@ -248,7 +248,7 @@ Aber warum sollte man Linux unter Windows benutzen…?">
 </h1>
 <p>Wir werden uns heute anschauen, wie du Linux (Ubuntu, Kali, &hellip;) unter Windows ganz simpel verwenden kannst, und welche Möglichkeiten dir dies bietet.
 !<img src="/images/Pasted%20image%2020250427070055.png" alt="Image Description"></p>
-<p>Um WSL2 auf Windows zu verwenden, ist folgendes möglich</p>
+<p>Um WSL2 auf Windows zu verwenden, ist folgendes nötig</p>
 <ul>
 <li>Hardware 64-bit</li>
 <li>min. 4GB Ram</li>
@@ -293,11 +293,11 @@ Also springen wir direkt in die Praxis😁.</p>
 <ul>
 <li>Installiere WSL auf Windows</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --install <span style="color:#8b949e;font-style:italic"># Admin Rechte benötigt</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl --install <span class="c1"># Admin Rechte benötigt</span>
 </span></span></code></pre></div><ul>
 <li>Installiere eine Ubuntu Distribution</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl -d ubuntu
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl -d ubuntu
 </span></span></code></pre></div><ul>
 <li>Man kann auch andere Distributionen installieren
 <ul>
@@ -305,9 +305,9 @@ Also springen wir direkt in die Praxis😁.</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --list --online <span style="color:#8b949e;font-style:italic"># zeigt alle verfügbaren Distros</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>wsl -d kali-linux <span style="color:#8b949e;font-style:italic"># installiere beispielsweise kali Distribution</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl --list --online <span class="c1"># zeigt alle verfügbaren Distros</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">wsl -d kali-linux <span class="c1"># installiere beispielsweise kali Distribution</span>
 </span></span></code></pre></div><ul>
 <li>Es ist ebenso möglich WSL Distributionen über den Microsoft Store herunterzuladen
 <ul>
@@ -316,7 +316,7 @@ Also springen wir direkt in die Praxis😁.</p>
 </li>
 </ul>
 <p>!<img src="/images/Pasted%20image%2020250427063914.png" alt="Image Description"></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl -d ubuntu <span style="color:#8b949e;font-style:italic"># name von der distro zum öffnen der distro</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl -d ubuntu <span class="c1"># name von der distro zum öffnen der distro</span>
 </span></span></code></pre></div><hr>
 <h2 id="windows-befehle-in-wsl">
   Windows Befehle in WSL
@@ -328,14 +328,14 @@ Also springen wir direkt in die Praxis😁.</p>
 <ul>
 <li>Ja, im WSL Terminal kann man auch Windows Befehle verwenden, wenn man <code>.exe</code> hinter den Programmnamen anhängt</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># inside wsl (ubuntu)</span>
-</span></span><span style="display:flex;"><span>ipconfig.exe 
-</span></span><span style="display:flex;"><span>ping.exe
-</span></span><span style="display:flex;"><span>notepad.exe
-</span></span><span style="display:flex;"><span>explorer.exe
-</span></span><span style="display:flex;"><span>.
-</span></span><span style="display:flex;"><span>.
-</span></span><span style="display:flex;"><span>.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># inside wsl (ubuntu)</span>
+</span></span><span class="line"><span class="cl">ipconfig.exe 
+</span></span><span class="line"><span class="cl">ping.exe
+</span></span><span class="line"><span class="cl">notepad.exe
+</span></span><span class="line"><span class="cl">explorer.exe
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">.
+</span></span><span class="line"><span class="cl">.
 </span></span></code></pre></div><ul>
 <li>auch kann man Linux Befehle im Windows Terminal wie folgt verwenden
 <ul>
@@ -343,9 +343,9 @@ Also springen wir direkt in die Praxis😁.</p>
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ipconfig | wsl grep 10. <span style="color:#8b949e;font-style:italic"># zum filtern</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>wsl cat
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ipconfig <span class="p">|</span> wsl grep 10. <span class="c1"># zum filtern</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">wsl cat
 </span></span></code></pre></div><p>Ist das nicht geil
 Die Betriebssysteme arbeiten quasi Hand in Hand
 !<img src="/images/Pasted%20image%2020250427064653.png" alt="Image Description"></p>
@@ -362,7 +362,7 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
 <li><code>spiderfoot</code> ist eine OSINT (Open Source for Intelligence Tool)</li>
 <li>Man kann das Programm wie folgt in <code>kali-linux</code> starten</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>spiderfoot -l 127.0.0.1:5001 <span style="color:#8b949e;font-style:italic"># &lt;ip&gt;:&lt;port&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">spiderfoot -l 127.0.0.1:5001 <span class="c1"># &lt;ip&gt;:&lt;port&gt;</span>
 </span></span></code></pre></div><ul>
 <li>Dann gibt man den Socket (in unserem Fall 127.0.0.1:5001) im Browser ein und kann das Tool verwenden</li>
 </ul>
@@ -374,8 +374,8 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
     <span class="sr-only">Link zu Überschrift</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --list
-</span></span><span style="display:flex;"><span>wsl --list --verbose <span style="color:#8b949e;font-style:italic"># für mehr Infos</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl --list
+</span></span><span class="line"><span class="cl">wsl --list --verbose <span class="c1"># für mehr Infos</span>
 </span></span></code></pre></div><ul>
 <li>Default Distor wird mit * markiert</li>
 </ul>
@@ -389,7 +389,7 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
 <ul>
 <li>Hier wird der Default beispielsweise auf <code>kali-linux</code> gesetzt</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --set-default kali-linux 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl --set-default kali-linux 
 </span></span></code></pre></div><h2 id="wsl-ausschalten">
   WSL ,,ausschalten&quot;
   <a class="heading-link" href="#wsl-ausschalten">
@@ -397,8 +397,8 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
     <span class="sr-only">Link zu Überschrift</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --shutdown <span style="color:#8b949e;font-style:italic"># stoppt alle distros</span>
-</span></span><span style="display:flex;"><span>wsl --terminate kali-linux <span style="color:#8b949e;font-style:italic"># um nur kali-linux zu stoppen</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl --shutdown <span class="c1"># stoppt alle distros</span>
+</span></span><span class="line"><span class="cl">wsl --terminate kali-linux <span class="c1"># um nur kali-linux zu stoppen</span>
 </span></span></code></pre></div><ul>
 <li>Weitere Informationen erhalten</li>
 </ul>
@@ -410,7 +410,7 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
     <span class="sr-only">Link zu Überschrift</span>
   </a>
 </h2>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wsl --unregister kali-linux <span style="color:#8b949e;font-style:italic"># zum löschen von kali-linux</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">wsl --unregister kali-linux <span class="c1"># zum löschen von kali-linux</span>
 </span></span></code></pre></div><h2 id="auf-windows-dateien-zugreifen">
   Auf Windows Dateien zugreifen
   <a class="heading-link" href="#auf-windows-dateien-zugreifen">
@@ -421,7 +421,7 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
 <ul>
 <li>Man kann in WSL über <code>/mnt/c</code> auf den Windows Harddrive zugreifen</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /mnt/c <span style="color:#8b949e;font-style:italic"># windows harddrive</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /mnt/c <span class="c1"># windows harddrive</span>
 </span></span></code></pre></div><h2 id="auf-linux-dateien-zugreifen">
   Auf Linux Dateien zugreifen
   <a class="heading-link" href="#auf-linux-dateien-zugreifen">
@@ -436,7 +436,7 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>explorer.exe . <span style="color:#8b949e;font-style:italic"># in wsl home verzeichnes eingeben</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">explorer.exe . <span class="c1"># in wsl home verzeichnes eingeben</span>
 </span></span></code></pre></div><hr>
 <h1 id="kali-win-kex">
   kali-win-kex
@@ -452,8 +452,8 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt install kali-win-kex -y <span style="color:#8b949e;font-style:italic"># installiere kali-win-kex</span>
-</span></span><span style="display:flex;"><span>kex <span style="color:#8b949e;font-style:italic"># erzeuge Umgebung</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo apt install kali-win-kex -y <span class="c1"># installiere kali-win-kex</span>
+</span></span><span class="line"><span class="cl">kex <span class="c1"># erzeuge Umgebung</span>
 </span></span></code></pre></div><ul>
 <li>F8 für Einstellungen</li>
 <li><code>kex --win --stop</code> zum stoppen oder einfach ausloggen
@@ -502,6 +502,8 @@ Die Betriebssysteme arbeiten quasi Hand in Hand
     <footer class="footer">
   <section class="container">
     ©
+    
+      2022 -
     
     2025
      Alperen Aksoy 

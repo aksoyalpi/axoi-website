@@ -468,73 +468,73 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     <span class="sr-only">Link to heading</span>
   </a>
 </h1>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>robocopy <span style="color:#a5d6ff">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span> <span style="color:#a5d6ff">&#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;</span> /mir
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>hugo server -t hugo-coder
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">robocopy <span class="s2">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span> <span class="s2">&#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;</span> /mir
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">hugo server -t hugo-coder
 </span></span></code></pre></div><p>!<img src="/images/Pasted%20image%2020250420201259.png" alt="Image Description"></p>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">os</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">re</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">import</span> <span style="color:#ff7b72">shutil</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Paths (using raw strings to handle Windows backslashes correctly)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>posts_dir <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>attachments_dir <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>static_images_dir <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#34;C:\Users\aksoy\dev\Website\axoi\static\images&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 1: Process each markdown file in the posts directory</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">for</span> filename <span style="color:#ff7b72;font-weight:bold">in</span> os<span style="color:#ff7b72;font-weight:bold">.</span>listdir(posts_dir):
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> filename<span style="color:#ff7b72;font-weight:bold">.</span>endswith(<span style="color:#a5d6ff">&#34;.md&#34;</span>):
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        filepath <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(posts_dir, filename)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">with</span> open(filepath, <span style="color:#a5d6ff">&#34;r&#34;</span>, encoding<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;utf-8&#34;</span>) <span style="color:#ff7b72">as</span> file:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            content <span style="color:#ff7b72;font-weight:bold">=</span> file<span style="color:#ff7b72;font-weight:bold">.</span>read()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        images <span style="color:#ff7b72;font-weight:bold">=</span> re<span style="color:#ff7b72;font-weight:bold">.</span>findall(<span style="color:#79c0ff">r</span><span style="color:#a5d6ff">&#39;\[\[([^]]*\.png)\]\]&#39;</span>, content)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># Step 3: Replace image links and ensure URLs are correctly formatted</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">for</span> image <span style="color:#ff7b72;font-weight:bold">in</span> images:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic"># Prepare the Markdown-compatible link with %20 replacing spaces</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            markdown_image <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;![Image Description](/images/</span><span style="color:#a5d6ff">{</span>image<span style="color:#ff7b72;font-weight:bold">.</span>replace(<span style="color:#a5d6ff">&#39; &#39;</span>, <span style="color:#a5d6ff">&#39;%20&#39;</span>)<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">)&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            content <span style="color:#ff7b72;font-weight:bold">=</span> content<span style="color:#ff7b72;font-weight:bold">.</span>replace(<span style="color:#79c0ff">f</span><span style="color:#a5d6ff">&#34;[[</span><span style="color:#a5d6ff">{</span>image<span style="color:#a5d6ff">}</span><span style="color:#a5d6ff">]]&#34;</span>, markdown_image)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#8b949e;font-style:italic"># Step 4: Copy the image to the Hugo static/images directory if it exists</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            image_source <span style="color:#ff7b72;font-weight:bold">=</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>join(attachments_dir, image)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#ff7b72">if</span> os<span style="color:#ff7b72;font-weight:bold">.</span>path<span style="color:#ff7b72;font-weight:bold">.</span>exists(image_source):
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                shutil<span style="color:#ff7b72;font-weight:bold">.</span>copy(image_source, static_images_dir)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#8b949e;font-style:italic"># Step 5: Write the updated content back to the markdown file</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#ff7b72">with</span> open(filepath, <span style="color:#a5d6ff">&#34;w&#34;</span>, encoding<span style="color:#ff7b72;font-weight:bold">=</span><span style="color:#a5d6ff">&#34;utf-8&#34;</span>) <span style="color:#ff7b72">as</span> file:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            file<span style="color:#ff7b72;font-weight:bold">.</span>write(content)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>print(<span style="color:#a5d6ff">&#34;Markdown files processed and images copied successfully.&#34;</span>)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">re</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">shutil</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Paths (using raw strings to handle Windows backslashes correctly)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">posts_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">attachments_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\Attachments&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">static_images_dir</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&#34;C:\Users\aksoy\dev\Website\axoi\static\images&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 1: Process each markdown file in the posts directory</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;.md&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">posts_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Step 2: Find all image links in the format ![Image Description](/images/Pasted%20image%20...%20.png)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="n">images</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\[\[([^]]*\.png)\]\]&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Step 3: Replace image links and ensure URLs are correctly formatted</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Prepare the Markdown-compatible link with %20 replacing spaces</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">markdown_image</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;![Image Description](/images/</span><span class="si">{</span><span class="n">image</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;%20&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[[</span><span class="si">{</span><span class="n">image</span><span class="si">}</span><span class="s2">]]&#34;</span><span class="p">,</span> <span class="n">markdown_image</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1"># Step 4: Copy the image to the Hugo static/images directory if it exists</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">image_source</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">attachments_dir</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_source</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">image_source</span><span class="p">,</span> <span class="n">static_images_dir</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Step 5: Write the updated content back to the markdown file</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s2">&#34;w&#34;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&#34;utf-8&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Markdown files processed and images copied successfully.&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><h1 id="push-to-github">
   Push to Github
   <a class="heading-link" href="#push-to-github">
@@ -542,11 +542,11 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     <span class="sr-only">Link to heading</span>
   </a>
 </h1>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
-</span></span><span style="display:flex;"><span>git subtree split --prefix public -b hostinger-deploy
-</span></span><span style="display:flex;"><span>git push origin hostinger-deploy:hostinger --force
-</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span class="line"><span class="cl">git subtree split --prefix public -b hostinger-deploy
+</span></span><span class="line"><span class="cl">git push origin hostinger-deploy:hostinger --force
+</span></span><span class="line"><span class="cl">git branch -D hostinger-deploy
 </span></span></code></pre></div><h1 id="the-mega-script">
   The Mega Script
   <a class="heading-link" href="#the-mega-script">
@@ -554,161 +554,161 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     <span class="sr-only">Link to heading</span>
   </a>
 </h1>
-<div class="highlight"><pre tabindex="0" style="color:#e6edf3;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># PowerShell Script for Windows</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set variables for Obsidian to Hugo copy</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$sourcePath</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$destinationPath</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set Github repo </span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$myrepo</span> <span style="color:#ff7b72;font-weight:bold">=</span> git@github.com:aksoyalpi/axoi-website.git
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Set error handling</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$ErrorActionPreference</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;Stop&#34;</span>
-</span></span><span style="display:flex;"><span>Set-StrictMode -Version Latest
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Change to the script&#39;s directory</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$ScriptDir</span> <span style="color:#ff7b72;font-weight:bold">=</span> Split-Path -Parent <span style="color:#79c0ff">$MyInvocation</span>.MyCommand.Definition
-</span></span><span style="display:flex;"><span>Set-Location <span style="color:#79c0ff">$ScriptDir</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for required commands</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$requiredCommands</span> <span style="color:#ff7b72;font-weight:bold">=</span> @<span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#a5d6ff">&#39;git&#39;</span>, <span style="color:#a5d6ff">&#39;hugo&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check for Python command (python or python3)</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#a5d6ff">&#39;python&#39;</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$pythonCommand</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#39;python&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> elseif <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#a5d6ff">&#39;python3&#39;</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$pythonCommand</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#39;python3&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Python is not installed or not in PATH.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>foreach <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$cmd</span> in <span style="color:#79c0ff">$requiredCommands</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Get-Command <span style="color:#79c0ff">$cmd</span> -ErrorAction SilentlyContinue<span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        Write-Error <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$cmd</span><span style="color:#a5d6ff"> is not installed or not in PATH.&#34;</span>
-</span></span><span style="display:flex;"><span>        exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 1: Check if Git is initialized, and initialize if necessary</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#a5d6ff">&#34;.git&#34;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Initializing Git repository...&#34;</span>
-</span></span><span style="display:flex;"><span>    git init
-</span></span><span style="display:flex;"><span>    git remote add origin <span style="color:#79c0ff">$myrepo</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Git repository already initialized.&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#79c0ff">$remotes</span> <span style="color:#ff7b72;font-weight:bold">=</span> git remote
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$remotes</span> -contains <span style="color:#a5d6ff">&#39;origin&#39;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>        Write-Host <span style="color:#a5d6ff">&#34;Adding remote origin...&#34;</span>
-</span></span><span style="display:flex;"><span>        git remote add origin <span style="color:#79c0ff">$myrepo</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Syncing posts from Obsidian...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#79c0ff">$sourcePath</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Source path does not exist: </span><span style="color:#79c0ff">$sourcePath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#79c0ff">$destinationPath</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Destination path does not exist: </span><span style="color:#79c0ff">$destinationPath</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Use Robocopy to mirror the directories</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$robocopyOptions</span> <span style="color:#ff7b72;font-weight:bold">=</span> @<span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#a5d6ff">&#39;/MIR&#39;</span>, <span style="color:#a5d6ff">&#39;/Z&#39;</span>, <span style="color:#a5d6ff">&#39;/W:5&#39;</span>, <span style="color:#a5d6ff">&#39;/R:3&#39;</span><span style="color:#ff7b72;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$robocopyResult</span> <span style="color:#ff7b72;font-weight:bold">=</span> robocopy <span style="color:#79c0ff">$sourcePath</span> <span style="color:#79c0ff">$destinationPath</span> @robocopyOptions
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$LASTEXITCODE</span> -ge 8<span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Robocopy failed with exit code </span><span style="color:#79c0ff">$LASTEXITCODE</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 3: Process Markdown files with Python script to handle image links</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Processing image links in Markdown files...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#ff7b72;font-weight:bold">(</span>Test-Path <span style="color:#a5d6ff">&#34;images.py&#34;</span><span style="color:#ff7b72;font-weight:bold">))</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Python script images.py not found.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Execute the Python script</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    &amp; <span style="color:#79c0ff">$pythonCommand</span> images.py
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to process image links.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 4: Build the Hugo site</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Building the Hugo site...&#34;</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    hugo
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Hugo build failed.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 5: Add changes to Git</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Staging changes for Git...&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$hasChanges</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">(</span>git status --porcelain<span style="color:#ff7b72;font-weight:bold">)</span> -ne <span style="color:#a5d6ff">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#79c0ff">$hasChanges</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;No changes to stage.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git add .
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 6: Commit changes with a dynamic message</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$commitMessage</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#a5d6ff">&#34;New Blog Post on </span><span style="color:#ff7b72">$(</span>Get-Date -Format <span style="color:#a5d6ff">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span style="color:#ff7b72">)</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$hasStagedChanges</span> <span style="color:#ff7b72;font-weight:bold">=</span> <span style="color:#ff7b72;font-weight:bold">(</span>git diff --cached --name-only<span style="color:#ff7b72;font-weight:bold">)</span> -ne <span style="color:#a5d6ff">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span>-not <span style="color:#79c0ff">$hasStagedChanges</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;No changes to commit.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> <span style="color:#ff7b72">else</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Host <span style="color:#a5d6ff">&#34;Committing changes...&#34;</span>
-</span></span><span style="display:flex;"><span>    git commit -m <span style="color:#a5d6ff">&#34;</span><span style="color:#79c0ff">$commitMessage</span><span style="color:#a5d6ff">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 7: Push all changes to the main branch</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Deploying to GitHub Master...&#34;</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git push origin master
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to push to Master branch.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;Deploying to GitHub Hostinger...&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Check if the temporary branch exists and delete it</span>
-</span></span><span style="display:flex;"><span><span style="color:#79c0ff">$branchExists</span> <span style="color:#ff7b72;font-weight:bold">=</span> git branch --list <span style="color:#a5d6ff">&#34;hostinger-deploy&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72">if</span> <span style="color:#ff7b72;font-weight:bold">(</span><span style="color:#79c0ff">$branchExists</span><span style="color:#ff7b72;font-weight:bold">)</span> <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Perform subtree split</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git subtree split --prefix public -b hostinger-deploy
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Subtree split failed.&#34;</span>
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Push to hostinger branch with force</span>
-</span></span><span style="display:flex;"><span>try <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    git push origin hostinger-deploy:hostinger --force
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span> catch <span style="color:#ff7b72;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span>    Write-Error <span style="color:#a5d6ff">&#34;Failed to push to hostinger branch.&#34;</span>
-</span></span><span style="display:flex;"><span>    git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span>    exit <span style="color:#a5d6ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ff7b72;font-weight:bold">}</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#8b949e;font-style:italic"># Delete the temporary branch</span>
-</span></span><span style="display:flex;"><span>git branch -D hostinger-deploy
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Write-Host <span style="color:#a5d6ff">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># PowerShell Script for Windows</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set variables for Obsidian to Hugo copy</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$sourcePath</span> <span class="o">=</span> <span class="s2">&#34;C:\Users\aksoy\OneDrive\Dokumente\Obsidian\my_second_brain\posts&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$destinationPath</span> <span class="o">=</span> <span class="s2">&#34;C:\Users\aksoy\dev\Website\axoi\content\posts&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set Github repo </span>
+</span></span><span class="line"><span class="cl"><span class="nv">$myrepo</span> <span class="o">=</span> git@github.com:aksoyalpi/axoi-website.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Set error handling</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ErrorActionPreference</span> <span class="o">=</span> <span class="s2">&#34;Stop&#34;</span>
+</span></span><span class="line"><span class="cl">Set-StrictMode -Version Latest
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Change to the script&#39;s directory</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$ScriptDir</span> <span class="o">=</span> Split-Path -Parent <span class="nv">$MyInvocation</span>.MyCommand.Definition
+</span></span><span class="line"><span class="cl">Set-Location <span class="nv">$ScriptDir</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check for required commands</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$requiredCommands</span> <span class="o">=</span> @<span class="o">(</span><span class="s1">&#39;git&#39;</span>, <span class="s1">&#39;hugo&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check for Python command (python or python3)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>Get-Command <span class="s1">&#39;python&#39;</span> -ErrorAction SilentlyContinue<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$pythonCommand</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> elseif <span class="o">(</span>Get-Command <span class="s1">&#39;python3&#39;</span> -ErrorAction SilentlyContinue<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$pythonCommand</span> <span class="o">=</span> <span class="s1">&#39;python3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Python is not installed or not in PATH.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">foreach <span class="o">(</span><span class="nv">$cmd</span> in <span class="nv">$requiredCommands</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Get-Command <span class="nv">$cmd</span> -ErrorAction SilentlyContinue<span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        Write-Error <span class="s2">&#34;</span><span class="nv">$cmd</span><span class="s2"> is not installed or not in PATH.&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 1: Check if Git is initialized, and initialize if necessary</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="s2">&#34;.git&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;Initializing Git repository...&#34;</span>
+</span></span><span class="line"><span class="cl">    git init
+</span></span><span class="line"><span class="cl">    git remote add origin <span class="nv">$myrepo</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;Git repository already initialized.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$remotes</span> <span class="o">=</span> git remote
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span><span class="nv">$remotes</span> -contains <span class="s1">&#39;origin&#39;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        Write-Host <span class="s2">&#34;Adding remote origin...&#34;</span>
+</span></span><span class="line"><span class="cl">        git remote add origin <span class="nv">$myrepo</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 2: Sync posts from Obsidian to Hugo content folder using Robocopy</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Syncing posts from Obsidian...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="nv">$sourcePath</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Source path does not exist: </span><span class="nv">$sourcePath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="nv">$destinationPath</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Destination path does not exist: </span><span class="nv">$destinationPath</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Use Robocopy to mirror the directories</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$robocopyOptions</span> <span class="o">=</span> @<span class="o">(</span><span class="s1">&#39;/MIR&#39;</span>, <span class="s1">&#39;/Z&#39;</span>, <span class="s1">&#39;/W:5&#39;</span>, <span class="s1">&#39;/R:3&#39;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$robocopyResult</span> <span class="o">=</span> robocopy <span class="nv">$sourcePath</span> <span class="nv">$destinationPath</span> @robocopyOptions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="nv">$LASTEXITCODE</span> -ge 8<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Robocopy failed with exit code </span><span class="nv">$LASTEXITCODE</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 3: Process Markdown files with Python script to handle image links</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Processing image links in Markdown files...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="o">(</span>Test-Path <span class="s2">&#34;images.py&#34;</span><span class="o">))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Python script images.py not found.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Execute the Python script</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&amp;</span> <span class="nv">$pythonCommand</span> images.py
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Failed to process image links.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 4: Build the Hugo site</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Building the Hugo site...&#34;</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    hugo
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Hugo build failed.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 5: Add changes to Git</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Staging changes for Git...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$hasChanges</span> <span class="o">=</span> <span class="o">(</span>git status --porcelain<span class="o">)</span> -ne <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="nv">$hasChanges</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;No changes to stage.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git add .
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 6: Commit changes with a dynamic message</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$commitMessage</span> <span class="o">=</span> <span class="s2">&#34;New Blog Post on </span><span class="k">$(</span>Get-Date -Format <span class="s1">&#39;yyyy-MM-dd HH:mm:ss&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$hasStagedChanges</span> <span class="o">=</span> <span class="o">(</span>git diff --cached --name-only<span class="o">)</span> -ne <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>-not <span class="nv">$hasStagedChanges</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;No changes to commit.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Host <span class="s2">&#34;Committing changes...&#34;</span>
+</span></span><span class="line"><span class="cl">    git commit -m <span class="s2">&#34;</span><span class="nv">$commitMessage</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 7: Push all changes to the main branch</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Deploying to GitHub Master...&#34;</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git push origin master
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Failed to push to Master branch.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Step 8: Push the public folder to the hostinger branch using subtree split and force push</span>
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;Deploying to GitHub Hostinger...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Check if the temporary branch exists and delete it</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$branchExists</span> <span class="o">=</span> git branch --list <span class="s2">&#34;hostinger-deploy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span><span class="nv">$branchExists</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Perform subtree split</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git subtree split --prefix public -b hostinger-deploy
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Subtree split failed.&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Push to hostinger branch with force</span>
+</span></span><span class="line"><span class="cl">try <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git push origin hostinger-deploy:hostinger --force
+</span></span><span class="line"><span class="cl"><span class="o">}</span> catch <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    Write-Error <span class="s2">&#34;Failed to push to hostinger branch.&#34;</span>
+</span></span><span class="line"><span class="cl">    git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Delete the temporary branch</span>
+</span></span><span class="line"><span class="cl">git branch -D hostinger-deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Write-Host <span class="s2">&#34;All done! Site synced, processed, committed, built, and deployed.&#34;</span>
 </span></span></code></pre></div>
       </div>
 
@@ -735,6 +735,8 @@ import os import re import shutil # Paths (using raw strings to handle Windows b
     <footer class="footer">
   <section class="container">
     ©
+    
+      2022 -
     
     2025
      Alperen Aksoy 
